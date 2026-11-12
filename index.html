@@ -611,6 +611,39 @@ html[data-eff=dark] .leaflet-tile-pane{filter:brightness(.82)}
 #pgbody #set .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
 @media(max-width:900px){#pgbody #set .cols{display:block}#pgbody #set .cols>div{margin-bottom:20px}#pgbody #set .stack>.card{padding:8px 18px 20px}}
 html[data-eff=dark] #pgbody #set .stack>.card{background:#18221c!important}
+#toast.act{pointer-events:auto}
+.tundo{margin-left:10px;padding:6px 14px;border:0;border-radius:999px;background:#fff;color:#14201a;font:inherit;font-weight:650;cursor:pointer}
+
+[data-top=rot],[data-m=rot]{--c:var(--c-rot)}#page[data-pg=rot]{--c:var(--c-rot)}:root{--c-rot:#7cb342}
+#pgbody #rot .card{margin-bottom:20px;padding:8px 24px 24px;border-radius:20px;background:#fff;box-shadow:0 4px 24px rgba(20,32,26,.07)}
+#pgbody #rot .sh{font-size:16px}
+.rotw{overflow-x:auto;margin:0 -4px;padding:0 4px}
+table.rot{min-width:720px;border-collapse:separate;border-spacing:0 6px;margin-top:0}
+table.rot th{text-align:left;font-size:13px;color:var(--mut);font-weight:600;padding:2px 8px}
+table.rot th small{display:block;font-size:11px;font-weight:500;opacity:.8}
+table.rot th.now{color:var(--c-rot)}
+table.rot td{padding:6px 8px;background:var(--surf);vertical-align:middle;position:relative}
+table.rot td:first-child{border-radius:12px 0 0 12px;position:sticky;left:0;z-index:1;background:var(--surf);min-width:120px}
+table.rot td:last-child{border-radius:0 12px 12px 0}
+table.rot td.warn{background:#fdecea;box-shadow:inset 0 0 0 1.5px #e57368}
+table.rot td.rf small{display:block;color:var(--mut);font-size:12px}
+.rsel{width:100%;min-width:130px;min-height:40px;padding:6px 8px;font-size:14px;border-radius:10px}
+.wi{font-style:normal;position:absolute;top:2px;right:4px;font-size:12px;color:#d0382b}
+.rc{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;background:color-mix(in srgb,var(--c) 18%,#fff);font-size:13px;font-weight:600;color:var(--ink)}
+.rc::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--c)}
+.rsum{padding:14px 0;border-top:1px solid var(--line)}.rsum:first-child{border-top:0}
+.rsh{display:flex;align-items:center;gap:10px;margin-bottom:8px}.rsh b{font-size:17px}.rsh .qb{margin-left:auto}
+.rbar{display:flex;height:14px;border-radius:7px;overflow:hidden;gap:2px;margin-bottom:10px}.rbar span{min-width:4px}
+.rchips{display:flex;flex-wrap:wrap;gap:6px}
+#planbar{position:fixed;z-index:1200;left:50%;bottom:24px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:8px 10px 8px 16px;border-radius:999px;background:rgba(20,32,26,.92);color:#fff;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+#planbar b{font-size:14px}#pbyears{display:flex;gap:4px}
+#planbar button{border:0;border-radius:999px;padding:7px 14px;background:rgba(255,255,255,.14);color:#fff;font:inherit;font-size:14px;cursor:pointer}
+#planbar #pbyears button.on{background:var(--c-rot);color:#10200a;font-weight:700}
+#planbar.hide{display:none}#planbar button{white-space:nowrap}
+body.planmap #fab{display:none!important}
+@media(max-width:800px){#planbar{left:10px;right:10px;transform:none;bottom:calc(var(--tb) + 12px);justify-content:space-between;padding:8px 8px 8px 14px}#planbar b{display:none}#pgbody #rot .card{padding:8px 16px 18px}}
+html[data-eff=dark] #pgbody #rot .card{background:#18221c!important}html[data-eff=dark] table.rot td{background:#202c25}html[data-eff=dark] table.rot td.warn{background:#3a2220}
+html[data-eff=dark] .rc{background:color-mix(in srgb,var(--c) 28%,#18221c)}
 </style>
 </head>
 <body>
@@ -665,7 +698,7 @@ html[data-eff=dark] #pgbody #set .stack>.card{background:#18221c!important}
 
 <div id="logwrap">
 <section id="log" class="hide">
-<div class="seg" role="tablist"><button type="button" data-go="log" class="on">Új munka</button><button type="button" data-go="plan">Tervezett</button><button type="button" data-go="done">Elvégzett</button></div>
+<div class="seg" role="tablist"><button type="button" data-go="log" class="on">Új munka</button><button type="button" data-go="plan">Tervezés</button><button type="button" data-go="done">Elvégzett</button></div>
 <div class="cols"><div>
 <details id="lform" open><summary id="lsum">Új munka rögzítése</summary>
  <div class="g2">
@@ -707,7 +740,7 @@ html[data-eff=dark] #pgbody #set .stack>.card{background:#18221c!important}
 </section>
 
 <section id="done" class="hide">
-<div class="seg" role="tablist"><button type="button" data-go="log">Új munka</button><button type="button" data-go="plan">Tervezett</button><button type="button" data-go="done" class="on">Elvégzett</button></div>
+<div class="seg" role="tablist"><button type="button" data-go="log">Új munka</button><button type="button" data-go="plan">Tervezés</button><button type="button" data-go="done" class="on">Elvégzett</button></div>
 <div class="g2" style="margin-top:4px">
  <select id="flt-f" aria-label="Szűrés táblára"></select>
  <select id="flt-t" aria-label="Szűrés munkatípusra"></select>
@@ -721,12 +754,12 @@ html[data-eff=dark] #pgbody #set .stack>.card{background:#18221c!important}
 </section>
 
 <section id="plan" class="hide">
-<div class="seg" role="tablist"><button type="button" data-go="log">Új munka</button><button type="button" data-go="plan" class="on">Tervezett</button><button type="button" data-go="done">Elvégzett</button></div>
-<details id="tkform" open><summary>Új teendő</summary>
+<div class="seg" role="tablist"><button type="button" data-go="log">Új munka</button><button type="button" data-go="plan" class="on">Tervezés</button><button type="button" data-go="done">Elvégzett</button></div>
+<details id="tkform" open><summary>Munka tervezése</summary>
  <div class="g2"><div><label for="tkf">Tábla</label><select id="tkf"></select></div><div><label for="tkt">Munka típusa</label><select id="tkt"></select></div></div>
  <div class="g2"><div><label for="tkd">Határidő</label><input id="tkd" type="date"></div><div><label for="tkw">Felelős</label><select id="tkw"></select></div></div>
  <label for="tkn">Megjegyzés</label><input id="tkn" placeholder="pl. szélcsendes reggelen">
- <div class="btns"><button class="btn" id="tkadd">Teendő felvétele</button></div>
+ <div class="btns"><button class="btn" id="tkadd">Munka betervezése</button></div>
 </details>
 <div id="tklist"></div>
 </section>
@@ -871,6 +904,12 @@ html[data-eff=dark] #pgbody #set .stack>.card{background:#18221c!important}
 </div></div>
 </section>
 
+<section id="rot" class="hide">
+<div class="card"><div class="sh" style="margin-top:0">Vetésterv tábláról táblára</div>
+<p class="mut" style="margin:0 0 10px">Tervezd meg, melyik táblára mit vetsz a következő években. A múlt és az idei évet a Munkanapló (Vetés) adja. A ⚠ jelzi, ha ugyanaz a növény két egymást követő évben kerülne ugyanarra a táblára.</p>
+<div class="rotw" id="rottbl"></div></div>
+<div class="card"><div class="sh" style="margin-top:0">Vetésterület évenként</div><div id="rotsum"></div></div>
+</section>
 <section id="set" class="hide">
 <div class="cols"><div class="stack">
 <div class="card setacc"><span class="av" id="sav">G</span><div><b id="sname">Gazdálkodó</b><span class="mut">Helyi fiók ezen az eszközön</span></div><button class="btn alt" type="button" disabled title="Hamarosan">Bejelentkezés (hamarosan)</button></div>
@@ -938,7 +977,7 @@ html[data-eff=dark] #pgbody #set .stack>.card{background:#18221c!important}
 </section>
 </aside>
 
-<div id="topnav" role="navigation" aria-label="Főmenü"><button type="button" data-top="map"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Térkép</button><span class="sep"></span><button type="button" data-top="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg>Ma</button><button type="button" data-top="fields"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Táblák</button><button type="button" data-top="log"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Napló</button><button type="button" data-top="stock"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-5 9 5v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M8 20v-7h8v7"/></svg>Készlet</button><button type="button" data-top="fin"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.5 9c-.6-1-1.6-1.4-2.5-1.4-1.4 0-2.4.8-2.4 1.9 0 2.8 5 1.4 5 4.2 0 1.1-1.1 1.9-2.6 1.9-1.1 0-2.2-.5-2.8-1.5M12 6v1.6M12 16.4V18"/></svg>Pénzügy</button><button type="button" data-top="rep"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>Jelentések</button><button type="button" data-top="data"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg>Adatok</button><span class="grow"></span><button type="button" data-top="set"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Beállítások</button></div>
+<div id="topnav" role="navigation" aria-label="Főmenü"><button type="button" data-top="map"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Térkép</button><span class="sep"></span><button type="button" data-top="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg>Ma</button><button type="button" data-top="fields"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Táblák</button><button type="button" data-top="log"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Napló</button><button type="button" data-top="rot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.5 4M20 20v-4h-4"/></svg>Vetésterv</button><button type="button" data-top="stock"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-5 9 5v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M8 20v-7h8v7"/></svg>Készlet</button><button type="button" data-top="fin"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.5 9c-.6-1-1.6-1.4-2.5-1.4-1.4 0-2.4.8-2.4 1.9 0 2.8 5 1.4 5 4.2 0 1.1-1.1 1.9-2.6 1.9-1.1 0-2.2-.5-2.8-1.5M12 6v1.6M12 16.4V18"/></svg>Pénzügy</button><button type="button" data-top="rep"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>Jelentések</button><button type="button" data-top="data"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg>Adatok</button><span class="grow"></span><button type="button" data-top="set"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Beállítások</button></div>
 <div id="page" class="hide">
  <div class="pg-bar">
   <button class="btn alt" id="pback" style="margin:0">← Térkép</button>
@@ -952,10 +991,11 @@ html[data-eff=dark] #pgbody #set .stack>.card{background:#18221c!important}
 <div id="tabbar" role="navigation" aria-label="Fő menü"><button type="button" data-m="home" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg>Ma</button><button type="button" data-m="map"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Térkép</button><button type="button" data-m="fields"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Táblák</button><button type="button" data-m="log"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Napló</button></div>
 <button id="menubtn" type="button" aria-label="Menü"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6"/></svg></button>
 <div id="qcost" class="modal hide" role="dialog" aria-modal="true" aria-label="Új költség"><div class="mbox"><div class="grab"></div><div class="sh" style="margin-top:0">Új költség</div><div class="mut" id="qcsub"></div><div class="g2"><div><label for="qcd">Dátum</label><input id="qcd" type="date"></div><div><label for="qcc">Kategória</label><select id="qcc"></select></div></div><label for="qcm">Megadás módja</label><select id="qcm"><option value="t">Összesen (Ft)</option><option value="h">Hektáronként (Ft/ha)</option></select><label for="qca" id="qcal">Összeg (Ft)</label><input id="qca" type="number" min="0" inputmode="numeric"><div class="mut" id="qch" style="margin-top:6px"></div><label for="qcn">Megnevezés</label><input id="qcn" placeholder="pl. vetőmag, 80 zsák"><div class="btns"><button class="btn" id="qcsave" type="button">Költség rögzítése</button><button class="btn alt" id="qccancel" type="button">Mégse</button></div></div></div>
-<div id="moresheet" class="modal hide" role="dialog" aria-label="Menü"><div class="mbox"><div class="grab"></div><div class="mprof" data-m="set" role="button" tabindex="0"><span class="av" id="mav">G</span><div><b id="mnm">Gazdálkodó</b><span>Fiók és beállítások</span></div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></div><div class="mgrid"><button type="button" data-m="stock" style="--c:#e07b1a"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-5 9 5v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M8 20v-7h8v7"/></svg></i><b>Készlet</b></button><button type="button" data-m="fin" style="--c:#1f9d62"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.5 9c-.6-1-1.6-1.4-2.5-1.4-1.4 0-2.4.8-2.4 1.9 0 2.8 5 1.4 5 4.2 0 1.1-1.1 1.9-2.6 1.9-1.1 0-2.2-.5-2.8-1.5M12 6v1.6M12 16.4V18"/></svg></i><b>Pénzügy</b></button><button type="button" data-m="rep" style="--c:#7a5cd6"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg></i><b>Jelentések</b></button><button type="button" data-m="scout" style="--c:#d9467a"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.2-4.2M9 11l1.6 1.6L13.5 9.5"/></svg></i><b>Megfigyelés</b></button><button type="button" data-m="data" style="--c:#3b7bd8"><i><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></i><b>Adatok</b></button><button type="button" data-m="set" style="--c:#5d6b64"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></i><b>Beállítások</b></button></div></div></div>
+<div id="moresheet" class="modal hide" role="dialog" aria-label="Menü"><div class="mbox"><div class="grab"></div><div class="mprof" data-m="set" role="button" tabindex="0"><span class="av" id="mav">G</span><div><b id="mnm">Gazdálkodó</b><span>Fiók és beállítások</span></div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></div><div class="mgrid"><button type="button" data-m="rot" style="--c:#7cb342"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.5 4M20 20v-4h-4"/></svg></i><b>Vetésterv</b></button><button type="button" data-m="stock" style="--c:#e07b1a"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-5 9 5v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M8 20v-7h8v7"/></svg></i><b>Készlet</b></button><button type="button" data-m="fin" style="--c:#1f9d62"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.5 9c-.6-1-1.6-1.4-2.5-1.4-1.4 0-2.4.8-2.4 1.9 0 2.8 5 1.4 5 4.2 0 1.1-1.1 1.9-2.6 1.9-1.1 0-2.2-.5-2.8-1.5M12 6v1.6M12 16.4V18"/></svg></i><b>Pénzügy</b></button><button type="button" data-m="rep" style="--c:#7a5cd6"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg></i><b>Jelentések</b></button><button type="button" data-m="scout" style="--c:#d9467a"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.2-4.2M9 11l1.6 1.6L13.5 9.5"/></svg></i><b>Megfigyelés</b></button><button type="button" data-m="data" style="--c:#3b7bd8"><i><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></i><b>Adatok</b></button><button type="button" data-m="set" style="--c:#5d6b64"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></i><b>Beállítások</b></button></div></div></div>
 <button id="fab" type="button" aria-label="Új munka rögzítése"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Új munka</button>
 <div id="dbar" class="hide"><p id="dhint"></p><button class="btn alt" id="dundo" type="button">↶ Vissza</button><button class="btn alt" id="dcan" type="button">Mégse</button><button class="btn" id="dfin" type="button">Kész</button></div>
 <div id="map"></div>
+<div id="planbar" class="hide"><b>Vetésterv</b><span id="pbyears"></span><button type="button" id="pbx">✕ Kilépés</button></div>
 <div id="fdet" class="hide" role="dialog" aria-label="Tábla részletei"></div>
 <div id="live" class="hide"></div>
 <div id="legend" class="hide"></div>
@@ -1060,6 +1100,7 @@ function migrate(d){
  o.fields.forEach(f=>{if(typeof f.area!=='number')f.area=areaHa(f.coords);if(f.farm&&!o.farms.some(x=>x.id===f.farm))delete f.farm});
  o.costs.forEach(c=>{if(c.farm&&!o.farms.some(x=>x.id===c.farm))delete c.farm});
  o.scouts=o.scouts.filter(x=>o.fields.some(f=>f.id===x.fid));o.tasks=o.tasks.filter(t=>!t.fid||o.fields.some(f=>f.id===t.fid));
+ o.rot={};if(d.rot&&typeof d.rot==='object'&&!Array.isArray(d.rot))Object.keys(d.rot).forEach(k=>{if(!o.fields.some(f=>String(f.id)===k))return;const m={};Object.entries(d.rot[k]||{}).forEach(([y,c])=>{if(/^\d{4}$/.test(y)&&c)m[y]=String(c)});if(Object.keys(m).length)o.rot[k]=m});
  o.curFarm=o.farms.some(x=>x.id===d.curFarm)?d.curFarm:'';
  o.stock=o.stock.filter(r=>r.crop||o.mats.some(m=>m.id===r.mid));
  o.stock.forEach(r=>{if(r.farm&&!o.farms.some(x=>x.id===r.farm))delete r.farm});
@@ -1094,7 +1135,12 @@ const latestFirst=(a,b)=>String(b.date).localeCompare(String(a.date))||b.id-a.id
 const statusOf=fid=>S.logs.filter(l=>l.fid===fid&&inY(l.date)).sort(latestFirst)[0]||null;
 const lastVariety=fid=>{const l=S.logs.filter(x=>x.fid===fid&&x.variety&&inY(x.date)).sort(latestFirst)[0];return l?l.variety:''};
 const fidsLabel=ids=>{const fs=ids.map(id=>S.fields.find(f=>f.id===id)).filter(Boolean);return fs.length===VF().length&&fs.length>1?'Minden tábla':fs.length<=2?fs.map(f=>f.name).join(', '):fs.length+' tábla'};
-function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),3500)}
+let undoSnap=null;
+function toastUndo(m){const t=$('#toast');t.innerHTML='';t.append(m+' ');const b=document.createElement('button');b.type='button';b.className='tundo';b.textContent='Visszavonás';
+ b.onclick=()=>{if(!undoSnap)return;try{S=migrate(JSON.parse(undoSnap))}catch(e){return}undoSnap=null;save();render();toast('Visszaállítva.')};
+ t.append(b);t.classList.add('on','act');clearTimeout(tt);tt=setTimeout(()=>{t.classList.remove('on','act');undoSnap=null},7000)}
+try{const _cf=window.confirm.bind(window);window.confirm=m=>{const ok=_cf(m);if(ok&&/^Törlöd/.test(m)&&!/megfigyelést/.test(m)){undoSnap=JSON.stringify(S);setTimeout(()=>toastUndo('Törölve.'),60)}return ok}}catch(e){}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.remove('act');t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),3500)}
 function fillSel(id,html){const el=$(id),v=el.value;el.innerHTML=html;if([...el.options].some(o=>o.value===v))el.value=v}
 function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
 const csvq=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';
@@ -1117,6 +1163,11 @@ function renderMap(){
  layer.clearLayers();
  const used=new Map();let none=false;
  VF().forEach(f=>{
+  if(planYear){if(edit&&edit.id===f.id)return;const r=rotCrop(f.id,planYear),c=r.c||r.hint||'',col=c?rotColor(c):'#9e9e9e';
+   if(c)used.set(capFirst(c),col);else none=true;
+   L.polygon(f.coords,{color:f.id===sel?Y:'#fff',weight:f.id===sel?3:2,fillColor:col,fillOpacity:c?.6:.22}).addTo(layer)
+    .bindTooltip(`<b>${esc(f.name)}</b>${c?`<br><small>${esc(c)}${r.act?'':' (terv)'}</small>`:''}`,{permanent:true,direction:'center',className:'lbl'})
+    .on('click',()=>{if(!drawing&&!edit){selectField(f.id);openDetail(f.id)}});return}
   const st=statusOf(f.id),k=st?keyOf(st):null;
   if(k)used.set(k,colorOf(k));else none=true;
   if(edit&&edit.id===f.id)return;
@@ -1125,6 +1176,7 @@ function renderMap(){
    .bindTooltip(`<b>${esc(f.name)}</b>${k?`<br><small>${esc(k)}</small>`:''}`,{permanent:true,direction:'center',className:'lbl'})
    .on('click',()=>{if(!drawing&&!edit){selectField(f.id);openDetail(f.id)}})});
  const lg=$('#legend');
+ if(planYear){lg.innerHTML='<b>Vetésterv – '+planYear+'</b>'+[...used].map(([k,c])=>`<div><span class="dot" style="background:${c}"></span>${esc(k)}</div>`).join('')+(none?'<div><span class="dot" style="background:#9e9e9e"></span>Nincs megadva</div>':'');lg.classList.remove('hide');return}
  lg.innerHTML=VF().length?'<b>Utolsó munka a táblán</b>'+[...used].map(([k,c])=>`<div><span class="dot" style="background:${c}"></span>${esc(k)}</div>`).join('')+(none?'<div><span class="dot" style="background:#9e9e9e"></span>Még nincs munka</div>':''):'';
  lg.classList.toggle('hide',!VF().length);
 }
@@ -1540,6 +1592,7 @@ $('#scsv').onclick=()=>{
 
 /* ---------- Terménykészlet ---------- */
 const ckey=s=>String(s||'').trim().toLowerCase();
+const seedCrop=n=>{const m=S.mats.find(x=>x.kind==='vetomag'&&ckey(x.name)===ckey(n));return ckey(m&&m.group?m.group:n)};
 function inferCrop(r){
  const cs=new Map();
  (r.fids||[]).forEach(id=>{const f=S.fields.find(x=>x.id===id);if(f&&ckey(f.crop))cs.set(ckey(f.crop),String(f.crop).trim())});
@@ -1677,7 +1730,7 @@ $('#ccsv').onclick=()=>{
 
 /* ---------- Telefonos kezelés, telepítés ---------- */
 const phone=()=>matchMedia('(max-width:800px)').matches;
-function mobTab(t){const k={plan:'log',done:'log'}[t]||t;$('#menubtn').classList.toggle('on',['stock','fin','rep','data','set'].includes(t));$$('#tabbar button').forEach(b=>b.classList.toggle('on',b.dataset.m===k))}
+function mobTab(t){const k={plan:'log',done:'log'}[t]||t;$('#menubtn').classList.toggle('on',['stock','fin','rep','data','set','rot'].includes(t));$$('#tabbar button').forEach(b=>b.classList.toggle('on',b.dataset.m===k))}
 function mobGo(t){
  if(t==='more'){$('#moresheet').classList.remove('hide');return}
  if(t==='scout'){$('#moresheet').classList.add('hide');openScout();return}
@@ -1813,7 +1866,8 @@ $('#tkadd').onclick=()=>{
  const fid=+$('#tkf').value||null,date=$('#tkd').value;
  if(!date){toast('Add meg a határidőt.');return}
  S.tasks.push({id:uid(),fid,type:$('#tkt').value,date,worker:$('#tkw').value,note:$('#tkn').value.trim(),done:false});
- save();$('#tkn').value='';render();toast('A teendő felvéve.')};
+ if(dmode==='work'&&tkIn){dmode='view';dwt='log'}
+ save();$('#tkn').value='';render();toast('A munka betervezve.')};
 function taskAction(e){
  const b=e.target.closest('button');if(!b)return false;
  if(b.dataset.tdel){const id=+b.dataset.tdel;if(confirm('Törlöd ezt a teendőt?')){S.tasks=S.tasks.filter(t=>t.id!==id);save();render()}return true}
@@ -2150,6 +2204,9 @@ $('#ladd').onclick=()=>{
  if(!d.date){toast('Add meg a dátumot.');return}
  if(d.h0!=null&&d.h1!=null&&d.h1<d.h0){toast('A záró üzemóra nem lehet kisebb a kezdőnél.');return}
  if(tp==='Betakarítás'){const pw=pendingWait(fid,d.date);if(pw&&!confirm('Figyelem: a(z) „'+(pw.l.mat||'permetezés')+'” ('+fmtD(pw.l.date)+') miatt az élelmezés-egészségügyi várakozási idő '+fmtD(pw.until)+'-ig tart. Biztosan rögzíted a betakarítást?'))return}
+ if(tp==='Vetés'&&d.mat){const cur=seedCrop(d.mat),y=+String(d.date).slice(0,4);
+  const prev=S.logs.find(x=>x.fid===fid&&x.type==='Vetés'&&x.id!==elog&&x.mat&&+String(x.date).slice(0,4)===y-1&&seedCrop(x.mat)===cur);
+  if(prev&&!confirm('Vetésforgó-figyelmeztetés: ezen a táblán tavaly ('+fmtD(prev.date)+') is '+cur+' volt. Egymás után kétszer ugyanazt vetni növeli a kórokozó- és kártevőnyomást, és csökkentheti a termést. Biztosan rögzíted?'))return}
  let l;
  if(elog){l=S.logs.find(x=>x.id===elog);Object.assign(l,d)}else{l=Object.assign({id:uid(),ts:Date.now()},d);S.logs.push(l)}
  if(l.mid&&l.h1!=null){const m=S.machines.find(x=>x.id===l.mid);if(m&&(m.hours==null||l.h1>m.hours))m.hours=l.h1}
@@ -2348,7 +2405,8 @@ function closePage(){
  $$('nav button').forEach(x=>x.classList.toggle('on',x.dataset.tab===grpTab(asideTab)))}
 function goTab(t){
  document.body.classList.remove('mapfull');
- const PG={home:['Ma','Áttekintés, időjárás és teendők'],fin:['Pénzügy','Költségek, bevételek és eredmény táblánként'],stock:['Készlet','Raktárkészlet: anyagok és betakarított termény'],rep:['Jelentések','Nyomtatható naplók és kimutatások'],set:['Beállítások','Fiók, megjelenés és adatok'],data:['Adatok és beállítások','Gépek, vegyszerek, műtrágyák, vetőmagok, munkások, mentés és visszatöltés']};
+ if(planYear){planYear=null;document.body.classList.remove('planmap');$('#planbar').classList.add('hide');renderMap()}
+ const PG={home:['Ma','Áttekintés, időjárás és teendők'],fin:['Pénzügy','Költségek, bevételek és eredmény táblánként'],stock:['Készlet','Raktárkészlet: anyagok és betakarított termény'],rep:['Jelentések','Nyomtatható naplók és kimutatások'],set:['Beállítások','Fiók, megjelenés és adatok'],rot:['Vetésterv','Mit vetsz a következő években, tábláról táblára'],data:['Adatok és beállítások','Gépek, vegyszerek, műtrágyák, vetőmagok, munkások, mentés és visszatöltés']};
  if(PG[t]){
   closeDetail();
   Object.keys(PG).forEach(k=>$('#'+k).classList.toggle('hide',k!==t));
@@ -2366,7 +2424,7 @@ function goTab(t){
  $('aside').scrollTop=0;enter($('#'+t));topSync()}
 $$('.pg-tabs button').forEach(b=>b.onclick=()=>goTab(b.dataset.p));
 function topSync(){
- const full=document.body.classList.contains('mapfull'),pg=['home','fin','stock','rep','data','set'].find(k=>!$('#'+k).classList.contains('hide'));
+ const full=document.body.classList.contains('mapfull'),pg=['home','fin','stock','rep','data','set','rot'].find(k=>!$('#'+k).classList.contains('hide'));
  const cur=full?'map':(!$('#page').classList.contains('hide')&&pg)?pg:grpTab(asideTab);
  $$('#topnav button').forEach(x=>x.classList.toggle('on',x.dataset.top===cur))}
 $$('#topnav button').forEach(b=>b.onclick=()=>{const k=b.dataset.top;
@@ -2380,7 +2438,7 @@ let backDone=false;
 
 
 /* ---------- Tábla részletei (felugró panel) ---------- */
-let detId=null,dmode='view',popIn=false,lfIn=false;
+let detId=null,dmode='view',popIn=false,lfIn=false,tkIn=false,dwt='log';
 const fmtD=d=>d?String(d).replace(/-/g,'. ')+'.':'';
 function story(fid){
  const ls=S.logs.filter(l=>l.fid===fid).sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:a.id-b.id);
@@ -2400,6 +2458,7 @@ function tItem(l,cls){
  return `<div class="ti${cls?' '+cls:''}" style="--c:${colorOf(keyOf(l))}"><div class="tt"><b>${esc(keyOf(l))}</b><span class="mut" style="margin-left:auto">${fmtD(l.date)}</span><button class="tedit" data-le="${l.id}" title="Szerkesztés" aria-label="Munka szerkesztése">✎</button></div>${bits.length?`<div class="mut tb">${bits.join(' · ')}</div>`:''}${c?`<span class="tc">${fmt(c.amt)} Ft</span>`:''}</div>`}
 function rescue(){
  if(lfIn){const home=$('#log .cols>div');home.insertBefore($('#lform'),home.firstChild);lfIn=false}
+ if(tkIn){$('#plan').insertBefore($('#tkform'),$('#tklist'));tkIn=false}
  if(popIn){$('#fields').insertBefore(pop,$('#newf'));popIn=false}}
 function leaveMode(){
  if(dmode==='work'&&elog)clearLog();
@@ -2447,8 +2506,10 @@ function renderDetail(){
  loadPhotos(box);
  if(dmode==='work'){
   box.querySelector('.dact').innerHTML='<button class="btn alt" data-act="back">← Vissza az adatlapra</button>';
-  box.querySelector('.db').innerHTML='<div id="dslot"></div>';
-  const lf=$('#lform');lf.open=true;$('#dslot').appendChild(lf);lfIn=true}
+  box.querySelector('.db').innerHTML='<div class="seg" id="dseg"><button type="button" data-ds="log" class="'+(dwt==='log'?'on':'')+'">Új munka</button><button type="button" data-ds="plan" class="'+(dwt==='plan'?'on':'')+'">Tervezés</button></div><div id="dslot"></div>';
+  if(dwt==='plan'&&!elog){const tf=$('#tkform');tf.open=true;$('#dslot').appendChild(tf);tkIn=true;$('#tkf').value=String(detId);if(!$('#tkd').value)$('#tkd').value=today()}
+  else{dwt='log';const lf=$('#lform');lf.open=true;$('#dslot').appendChild(lf);lfIn=true}
+  if(elog)$('#dseg').classList.add('hide')}
  else if(dmode==='field'){
   box.querySelector('.dact').innerHTML='<button class="btn alt" data-act="back">← Vissza az adatlapra</button>';
   box.querySelector('.db').innerHTML='<div id="dslot"></div>';
@@ -2456,11 +2517,12 @@ function renderDetail(){
  box.classList.remove('hide')}
 $('#fdet').onclick=e=>{
  const b=e.target.closest('button');if(!b)return;
- if(b.dataset.le){if(dmode!=='view')return;dmode='work';renderDetail();startEditLog(+b.dataset.le);$('#fdet').scrollTop=0;return}
+ if(b.dataset.le){if(dmode!=='view')return;dwt='log';dmode='work';renderDetail();startEditLog(+b.dataset.le);$('#fdet').scrollTop=0;return}
+ if(b.dataset.ds){if(elog)return;dwt=b.dataset.ds;renderDetail();$('#fdet').scrollTop=0;return}
  if(!b.dataset.act)return;
  const id=detId,act=b.dataset.act;
  if(act==='close'){if(edit){toast('Előbb mentsd vagy vesd el a határ módosítását.');return}closeDetail()}
- else if(act==='new'){if(elog)clearLog();dmode='work';renderDetail();$('#lf').value=id;$('#ld').value=today();$('#fdet').scrollTop=0}
+ else if(act==='new'){if(elog)clearLog();dwt='log';dmode='work';renderDetail();$('#lf').value=id;$('#ld').value=today();$('#fdet').scrollTop=0}
  else if(act==='log'){closeDetail();goTab('done');$('#flt-f').value=id;renderLog()}
  else if(act==='edit'){dmode='field';popId=id;cardFor=null;render()}
  else if(act==='scout')openScout(id)
@@ -2507,14 +2569,66 @@ map.on('locationfound',e=>{
 map.on('locationerror',()=>toast('A helyzeted nem állapítható meg. Engedélyezd a helymeghatározást a böngészőben.'));
 
 /* ---------- Indítás ---------- */
-function render(){fillYears();renderMap();renderFields();renderSelects();renderLog();renderPlan();renderHome();renderRep();renderFin();renderRevFields();renderFarms();renderData();renderMats();renderWorkers();renderStock();renderCrops();svShow();renderDetail()}
+function render(){fillYears();renderMap();renderFields();renderSelects();renderLog();renderPlan();renderRot();renderHome();renderRep();renderFin();renderRevFields();renderFarms();renderData();renderMats();renderWorkers();renderStock();renderCrops();svShow();renderDetail()}
 const topts=TYPES.map(t=>`<option>${t}</option>`).join('');
 $('#lt').innerHTML=topts;
 $('#ccat').innerHTML=CATS.map(c=>`<option>${c}</option>`).join('');
 ['#ld','#cd','#rd'].forEach(s=>$(s).value=today());
 $('#newf').open=!S.fields.length;
-$('#pgbody').appendChild($('#home'));$('#pgbody').appendChild($('#fin'));$('#pgbody').appendChild($('#rep'));$('#pgbody').appendChild($('#stock'));$('#pgbody').appendChild($('#data'));$('#pgbody').appendChild($('#set'));
+$('#pgbody').appendChild($('#home'));$('#pgbody').appendChild($('#fin'));$('#pgbody').appendChild($('#rep'));$('#pgbody').appendChild($('#stock'));$('#pgbody').appendChild($('#data'));$('#pgbody').appendChild($('#set'));$('#pgbody').appendChild($('#rot'));
 
+
+/* ---------- Vetésterv ---------- */
+let planYear=null;
+const ROTCOL={'kukorica':'#e8b923','búza':'#c9a15a','árpa':'#a9b84a','napraforgó':'#f2a900','repce':'#c5d92d','zab':'#b89a6b','rozs':'#8f9b6a','tritikálé':'#a98f5f','borsó':'#5bb66a','szója':'#3d9a5f','cukorrépa':'#b25aa0','burgonya':'#a5693a','lucerna':'#2f9e8f','cirok':'#cf6b3c','szőlő':'#7b3fa0','alma':'#d6483f'};
+const cropNorm=n=>{let k=ckey(n).replace(/^(őszi|tavaszi|téli|nyári)\s+/,'');if(k==='silókukorica')k='kukorica';return k};
+const rotColor=n=>{const k=cropNorm(n);if(ROTCOL[k])return ROTCOL[k];let h=0;for(const c of k)h=(h*31+c.charCodeAt(0))%360;return 'hsl('+h+',55%,52%)'};
+const capFirst=x=>x?String(x)[0].toUpperCase()+String(x).slice(1):'';
+const curY=()=>new Date().getFullYear();
+function rotActual(fid,y){
+ const ls=S.logs.filter(l=>l.fid===fid&&l.type==='Vetés'&&String(l.date).slice(0,4)===String(y)&&l.mat).sort((a,b)=>a.date<b.date?-1:1);
+ if(!ls.length)return '';const m=ls[ls.length-1],mm=S.mats.find(x=>x.kind==='vetomag'&&ckey(x.name)===ckey(m.mat));return capFirst((mm&&mm.group)||m.mat)}
+function rotCrop(fid,y){
+ const a=rotActual(fid,y);if(a)return{c:a,act:true,hint:''};
+ const p=(S.rot[fid]||{})[y];if(p)return{c:capFirst(p),act:false,hint:''};
+ let hint='';if(+y===curY()){const f=S.fields.find(x=>x.id===fid);if(f&&f.crop)hint=capFirst(f.crop)}
+ return{c:'',act:false,hint}}
+const rotEff=(fid,y)=>{const r=rotCrop(fid,y);return r.c||r.hint};
+function renderRot(){
+ if(!$('#rottbl'))return;
+ const Y=curY(),ys=[Y-1,Y,Y+1,Y+2,Y+3],F=VF();
+ if(!F.length){$('#rottbl').innerHTML='<p class="mut">Előbb vegyél fel egy táblát.</p>';$('#rotsum').innerHTML='';return}
+ const opts=cropOpts();
+ $('#rottbl').innerHTML='<table class="rot"><thead><tr><th>Tábla</th>'+ys.map(y=>`<th class="${y===Y?'now':''}">${y}<small>${y<Y?'tény':y===Y?'idei':'terv'}</small></th>`).join('')+'</tr></thead><tbody>'+F.map(f=>{
+  return `<tr><td class="rf"><b>${esc(f.name)}</b><small>${num(f.area||0)} ha</small></td>`+ys.map(y=>{
+   const r=rotCrop(f.id,y),cur=r.c||r.hint,prev=y>ys[0]?rotEff(f.id,y-1):'',warn=prev&&cur&&cropNorm(prev)===cropNorm(cur);
+   if(r.act||y<Y)return `<td class="${warn?'warn':''}"${warn?' title="Tavaly is ugyanez volt ezen a táblán"':''}>${r.c?`<span class="rc" style="--c:${rotColor(r.c)}">${esc(r.c)}</span>${r.act?'':''}`:'<span class="mut">—</span>'}${warn?'<i class="wi">⚠</i>':''}</td>`;
+   const o=r.c&&!opts.some(x=>ckey(x)===ckey(r.c))?[...opts,r.c]:opts;
+   return `<td class="${warn?'warn':''}"${warn?' title="Az előző évben is ugyanez volt ezen a táblán"':''}><select class="rsel" data-rf="${f.id}" data-ry="${y}" aria-label="${esc(f.name)} ${y}"><option value="">${r.hint?'Most: '+esc(r.hint):'— válassz —'}</option>${o.map(x=>`<option${r.c&&ckey(x)===ckey(r.c)?' selected':''}>${esc(x)}</option>`).join('')}</select>${warn?'<i class="wi">⚠</i>':''}</td>`}).join('')+'</tr>'}).join('')+'</tbody></table>';
+ $('#rotsum').innerHTML=ys.filter(y=>y>=Y).map(y=>{
+  const m=new Map();let none=0;
+  F.forEach(f=>{const c=rotEff(f.id,y);if(!c){none+=f.area||0;return}const k=cropNorm(c),e=m.get(k)||{n:capFirst(c),ha:0};e.ha+=f.area||0;m.set(k,e)});
+  const es=[...m.values()].sort((a,b)=>b.ha-a.ha),tot=es.reduce((a,e)=>a+e.ha,0)+none;
+  return `<div class="rsum"><div class="rsh"><b>${y}</b><span class="mut">${num(tot)} ha</span><button type="button" class="qb" data-rmap="${y}">Térképen</button></div>`+
+   (tot>0?`<div class="rbar">${es.map(e=>`<span style="flex:${e.ha};background:${rotColor(e.n)}" title="${esc(e.n)}: ${num(e.ha)} ha"></span>`).join('')}${none>0?`<span style="flex:${none};background:#cfd6d1" title="Nincs megadva"></span>`:''}</div>`:'')+
+   `<div class="rchips">${es.map(e=>`<span class="rc" style="--c:${rotColor(e.n)}">${esc(e.n)} · ${num(e.ha)} ha</span>`).join('')}${none>0?`<span class="rc" style="--c:#9aa59e">Nincs megadva · ${num(none)} ha</span>`:''}</div></div>`}).join('')}
+$('#rottbl').addEventListener('change',e=>{
+ const sl=e.target.closest('select[data-rf]');if(!sl)return;
+ const k=sl.dataset.rf,y=sl.dataset.ry;
+ if(!S.rot[k])S.rot[k]={};
+ if(sl.value)S.rot[k][y]=sl.value;else delete S.rot[k][y];
+ if(!Object.keys(S.rot[k]).length)delete S.rot[k];
+ save();renderRot();renderMap()});
+$('#rotsum').addEventListener('click',e=>{const b=e.target.closest('[data-rmap]');if(b)showPlanMap(+b.dataset.rmap)});
+function planBar(){
+ const Y=curY();$('#pbyears').innerHTML=[Y,Y+1,Y+2,Y+3].map(y=>`<button type="button" class="${y===planYear?'on':''}" data-py="${y}">${y}</button>`).join('')}
+function showPlanMap(y){
+ planYear=y;document.body.classList.add('planmap');closeDetail();
+ if(phone())mobGo('map');else{closePage();document.body.classList.add('mapfull');topSync()}
+ planBar();$('#planbar').classList.remove('hide');renderMap();fitAll()}
+function exitPlan(){planYear=null;document.body.classList.remove('planmap');$('#planbar').classList.add('hide');renderMap();goTab('rot')}
+$('#pbyears').addEventListener('click',e=>{const b=e.target.closest('[data-py]');if(b){planYear=+b.dataset.py;planBar();renderMap()}});
+$('#pbx').onclick=exitPlan;
 /* ---------- Beállítások ---------- */
 function initials(n){n=(n||'').trim();return n?n.split(/\s+/).slice(0,2).map(x=>x[0].toUpperCase()).join(''):'G'}
 function setSync(){
