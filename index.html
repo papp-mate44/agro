@@ -162,10 +162,11 @@ table:has(#llist),table:has(#ftx){display:block}
  body.wide aside{width:min(960px,calc(100vw - 32px))}
  body.wide section{padding:20px 28px 28px}
  body.wide .hd header{padding:20px 28px 0}body.wide .hd nav{margin:14px 28px 0}
- body.wide #log .cols{display:grid;grid-template-columns:minmax(300px,.8fr) minmax(0,1.3fr);gap:0 28px;align-items:start}
+ body.wide #logwrap{display:grid;grid-template-columns:minmax(300px,.8fr) minmax(0,1.3fr);gap:0 28px;align-items:start}
+ body.wide #log{position:sticky;top:96px;padding-right:0}
+ body.wide #done{padding-left:0}
  body.wide .cols>div:last-child>.g2:first-child{margin-top:0}
  body.wide .cols>div>.sh:first-child{margin-top:0}
- body.wide #log .cols>div:first-child{position:sticky;top:96px}
  body.wide #flt-f,body.wide #flt-t,body.wide #flt-w,body.wide #flt-m{min-width:0}
 }
 /* tábla-részletek panel */
@@ -318,6 +319,70 @@ nav button{font-size:12px}
 #ckpi .kt{padding:14px 16px;border-radius:16px;background:#fff;box-shadow:0 4px 24px rgba(20,32,26,.07)}
 #ckpi .kt b{font-size:20px}
 
+.seg{display:flex;gap:4px;padding:4px;margin:0 0 14px;background:var(--surf);border-radius:12px}
+.seg button{flex:1;padding:9px 8px;border:0;border-radius:9px;background:none;font:inherit;font-size:14px;color:var(--mut);cursor:pointer}
+.seg button.on{background:#fff;color:var(--ink);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+body.wide #done{max-width:none}
+.warnb{margin:0 0 12px;padding:11px 14px;border-radius:14px;background:#fff4e0;color:#8a5a00;font-size:13.5px;border:1px solid #f1d49a}
+.sc{padding:10px 12px;margin-top:8px;border-radius:14px;background:var(--surf)}
+.sct{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.sct .x{margin-left:auto}
+.sev{display:inline-flex;gap:3px}.sev i{width:7px;height:7px;border-radius:50%;background:#d7ded9}.sev i.on{background:#e4572e}
+.ph2{margin-top:8px}.ph2 img{width:100%;max-height:200px;object-fit:cover;border-radius:12px;cursor:zoom-in;background:#e9eee9;min-height:60px}
+#lbox{position:fixed;inset:0;z-index:3200;display:grid;place-items:center;background:rgba(5,12,8,.92);cursor:zoom-out;padding:16px}
+#lbox.hide{display:none}#lbox img{max-width:100%;max-height:100%;border-radius:12px}
+
+.tk{display:flex;align-items:center;gap:10px;padding:10px 12px;margin-top:8px;border-radius:14px;background:var(--surf)}
+.tk .dot{margin:0;flex:none;width:10px;height:10px;border-radius:50%}.tkb{flex:1;min-width:0}.tkb .mut{margin-top:1px}
+.tk.late{background:#fdeceb}.tk.done{opacity:.6}
+.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.hero h2{margin:0;font-size:28px;letter-spacing:-.02em}.hero p{margin:4px 0 0}
+.hact{display:flex;gap:8px;flex-wrap:wrap}.hact .btn{margin:0}
+.hkpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.hkpi .kt{padding:14px 16px;border-radius:16px;background:#fff;box-shadow:0 4px 24px rgba(20,32,26,.07);position:relative;overflow:hidden}
+.hkpi .kt::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.hkpi .kt b{font-size:20px;display:block}.hkpi .kt span,.hkpi .kt i{font-size:12.5px;color:var(--mut);font-style:normal}
+.hgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.hgrid .wxc{grid-column:1/-1}
+#home .cc{padding:18px 20px;border-radius:20px;background:#fff;box-shadow:0 4px 24px rgba(20,32,26,.07)}
+#home .cc h3{margin:0 0 6px;font-size:16px;display:flex;align-items:baseline;gap:8px}#home .cc h3 small{font-weight:400;color:var(--mut);font-size:12.5px}
+.lnk{margin-left:auto;border:0;background:none;color:var(--acc);font:inherit;font-size:13px;font-weight:600;cursor:pointer;padding:4px}
+.al{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;border:0;background:var(--surf);border-radius:14px;padding:10px 12px;margin-top:8px;font:inherit;cursor:pointer}
+.al small{display:block;color:var(--mut);font-size:12.5px;margin-top:1px}.ad{width:10px;height:10px;border-radius:50%;margin-top:5px;flex:none;background:#2f9e63}
+.al.warn .ad{background:#f4b400}.al.bad .ad{background:#e4572e}.al.info .ad{background:#29b6f6}.ok{margin:8px 0 0}
+.wxn{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:8px 0 12px}
+.wxm{display:flex;gap:12px;align-items:center}.wxm .wi{width:46px;height:46px}.wxt{font-size:34px;font-weight:650;letter-spacing:-.02em;display:block;line-height:1}.wxm span{color:var(--mut);font-size:13px}
+.wi{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;color:#3b6e57}
+.wxs{padding:10px 16px;border-radius:16px;min-width:190px}.wxs span{display:block;font-size:12px;opacity:.8}.wxs b{font-size:20px}.wxs i{display:block;font-style:normal;font-size:12.5px;opacity:.85}
+.wxs.good{background:#e3f3ea;color:#14673f}.wxs.mid{background:#fff4e0;color:#8a5a00}.wxs.bad{background:#fdeceb;color:#a3321f}
+.wxf{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.wxd{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px;border-radius:14px;background:var(--surf);font-size:12.5px}.wxd .wi{width:26px;height:26px}.wxd b{font-size:14px}.wxd i{font-style:normal;color:var(--mut)}.wxd small{color:#2a7fb8;min-height:14px;font-size:11px}
+.sp{width:22px;height:5px;border-radius:3px;margin:2px 0}.sp.good{background:#2f9e63}.sp.mid{background:#f4b400}.sp.bad{background:#e4572e}
+.wxx{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:12px;font-size:13px;color:var(--mut)}.wxx b{color:var(--ink)}.wxa{margin-top:8px;font-size:11.5px}
+.steps{display:flex;flex-direction:column;gap:14px}.stp{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.stp>div{flex:1;min-width:200px}.stp p{margin:2px 0 0}.stp .btn{margin:0}
+.stp>span{width:34px;height:34px;border-radius:50%;background:var(--accs);color:var(--acc);display:grid;place-items:center;font-weight:650;flex:none}
+@media(max-width:800px){.hact .btn{white-space:nowrap;padding:12px 8px;font-size:14.5px}.hkpi{grid-template-columns:1fr 1fr}.hgrid{grid-template-columns:1fr}.hero h2{font-size:24px}.hact{width:100%}.hact .btn{flex:1}.wxs{width:100%}}
+
+.repb{display:flex;flex-wrap:wrap;gap:8px}.repb .btn{margin:0;flex:1 1 200px}
+.chk{margin:0 0 6px}.chk.warn b{color:#a3321f}.chk.ok b{color:var(--acc)}
+#pgbody #rep .cols>div.stack{padding:0;display:flex;flex-direction:column;gap:24px}
+#pgbody #rep .stack>.card{padding:8px 24px 24px;border-radius:20px;background:#fff;box-shadow:0 4px 24px rgba(20,32,26,.07)}
+#printarea{display:none}
+@media print{
+ @page{size:A4 landscape;margin:12mm}
+ html,body{height:auto!important;overflow:visible!important;background:#fff!important}
+ body.printing>*:not(#printarea){display:none!important}
+ body.printing #printarea{display:block!important;font:11pt/1.35 'Inter',Arial,sans-serif;color:#000}
+ #printarea h1{font-size:18pt;margin:0 0 8pt;-webkit-text-fill-color:#000;background:none;color:#000}
+ #printarea .pmeta{display:flex;justify-content:space-between;gap:20pt;margin-bottom:10pt;font-size:10pt}
+ #printarea table{width:100%;border-collapse:collapse;font-size:9pt}
+ #printarea th,#printarea td{border:1px solid #888;padding:3pt 4pt;text-align:left;vertical-align:top}
+ #printarea th{background:#eee}#printarea tr{break-inside:avoid}
+ #printarea .pfoot{margin-top:10pt;font-size:8.5pt;color:#333}
+}
+
+.msl{display:flex;flex-direction:column;gap:8px}
+.msl button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;padding:14px 16px;border:0;border-radius:16px;background:var(--surf);font:inherit;text-align:left;cursor:pointer;transition:transform .2s var(--ease),background .2s}
+.msl button:active{transform:scale(.97)}.msl button b{font-size:15.5px}.msl button span{color:var(--mut);font-size:13px}
 /* ===== Telefonos nézet ===== */
 #tabbar,#fab,#dbar{display:none}
 #inst .ios{display:none}
@@ -395,12 +460,89 @@ nav button{font-size:12px}
  .mbox{width:100%;max-height:92vh;max-height:92dvh;border-radius:22px 22px 0 0;padding:20px 18px calc(22px + env(safe-area-inset-bottom))}
  .vtx{box-shadow:0 1px 8px rgba(0,0,0,.6)}
  #inst .ios{display:block}
+ .seg{display:flex}
  #pgbody #fsum .kv3{display:grid;grid-template-columns:1fr;gap:8px;padding:16px 18px}
  #fsum .kv3>div{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
  #pgbody #fsum .kv3 b{font-size:20px}
  #pgbody,#page{overflow-x:hidden}
 }
-@media(prefers-reduced-motion:reduce){#toast{transition:none}#fdet{animation:none}aside{transition:none}}
+
+/* ===== Prémium hatás: mozgás és finomítás ===== */
+:root{--gold:#c8a24a;--ease:cubic-bezier(.22,1,.36,1);--sh1:0 1px 2px rgba(20,32,26,.06),0 8px 24px rgba(20,32,26,.07);--sh2:0 2px 4px rgba(20,32,26,.08),0 18px 44px rgba(20,32,26,.15)}
+::selection{background:rgba(200,162,74,.35)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+input:focus,select:focus,textarea:focus{outline:0;box-shadow:0 0 0 3px rgba(31,122,77,.18);transition:box-shadow .2s}
+aside,#page,#fdet{scrollbar-width:thin;scrollbar-color:#c5d0c8 transparent}
+@keyframes asidein{from{opacity:0;transform:translateX(-22px)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes growx{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes growy{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes donutin{from{opacity:0;transform:rotate(-100deg) scale(.82)}to{opacity:1;transform:none}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes popin{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes pagein{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes sidein2{from{opacity:0;transform:translateX(36px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes ringp{0%{box-shadow:0 0 0 0 rgba(200,162,74,.6)}70%{box-shadow:0 0 0 18px rgba(200,162,74,0)}100%{box-shadow:0 0 0 0 rgba(200,162,74,0)}}
+@keyframes shine{from{transform:translateX(-120%) skewX(-20deg)}to{transform:translateX(220%) skewX(-20deg)}}
+@keyframes tabpop{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+aside{animation:asidein .7s var(--ease) both;box-shadow:0 2px 6px rgba(0,0,0,.08),0 24px 60px rgba(10,30,20,.3),inset 0 1px 0 rgba(255,255,255,.7)}
+h1{background:linear-gradient(120deg,#14201a 30%,#1f7a4d);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{position:relative;overflow:hidden;background:linear-gradient(135deg,#27965c,#1a6a42);box-shadow:0 6px 16px rgba(31,122,77,.28),inset 0 1px 0 rgba(255,255,255,.2);transition:transform .25s var(--ease),box-shadow .25s,filter .2s}
+.btn::after{content:'';position:absolute;top:0;bottom:0;width:40%;left:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-120%) skewX(-20deg);pointer-events:none}
+.btn.alt{background:var(--surf);box-shadow:none}
+.btn.alt::after{display:none}
+.btn:active{transform:scale(.96)}
+.qb,.seg button,nav button,#tabbar button,.x,.fcc,summary{transition:transform .2s var(--ease),background .2s,color .2s,box-shadow .25s}
+.qb:active,.x:active,.seg button:active{transform:scale(.94)}
+.qb.on{box-shadow:0 0 0 1px rgba(200,162,74,.55),0 4px 12px rgba(31,122,77,.18)}
+nav button.on,.seg button.on{box-shadow:0 1px 3px rgba(0,0,0,.12),inset 0 -2px 0 var(--gold)}
+#tabbar button.on svg{animation:tabpop .4s var(--ease)}
+#tabbar{box-shadow:0 -1px 0 rgba(200,162,74,.35),0 -8px 30px rgba(0,0,0,.08)}
+.cc,.kt,.srow,.card,details{transition:transform .35s var(--ease),box-shadow .35s}
+.cc,#skpi .kt,#ckpi .kt,.fcc{box-shadow:var(--sh1)}
+#skpi .kt,#ckpi .kt{position:relative;overflow:hidden}
+#skpi .kt::before,#ckpi .kt::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.pg-bar{box-shadow:0 1px 0 rgba(200,162,74,.35)}
+details[open]>*:not(summary){animation:rise .4s var(--ease) both}
+.modal{animation:fadein .25s ease;backdrop-filter:blur(6px)}
+.mbox{animation:popin .4s var(--ease)}
+#page:not(.hide){animation:pagein .5s var(--ease)}
+#toast{transition:opacity .3s,transform .5s var(--ease);backdrop-filter:blur(10px);border-left:3px solid var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.leaflet-overlay-pane path{transition:fill-opacity .3s,stroke-width .3s,stroke .3s}
+@media(hover:hover){
+ .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(31,122,77,.36),inset 0 1px 0 rgba(255,255,255,.25);filter:none}
+ .btn.alt:hover{box-shadow:var(--sh1)}
+ .btn:hover::after{animation:shine .9s var(--ease)}
+ .cc:hover,#skpi .kt:hover,#ckpi .kt:hover,.fcc:hover,.srow:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+ .qb:hover,.x:hover{transform:translateY(-1px)}
+}
+@media(min-width:801px){#fdet{animation:sidein2 .55s var(--ease)}}
+.enter .cc,.enter .kt,.enter .fcc,.enter .srow,.enter .arow,.enter .sumline,.enter details,.enter .card,.enter .hb,.enter tbody>tr,.enter .kv3,.enter .tl>*{animation:rise .65s var(--ease) both;animation-delay:calc(var(--i,0)*45ms)}
+.enter .hb .tr i,.enter .mini i,.enter .sbar i{transform-origin:left;animation:growx 1s var(--ease) both;animation-delay:.3s}
+.enter .mcol i{transform-origin:bottom;animation:growy 1s var(--ease) both;animation-delay:.3s}
+.enter .donut svg{animation:donutin 1s var(--ease) both;animation-delay:.1s}
+#fab::after{content:'';position:absolute;inset:0;border-radius:inherit;animation:ringp 2.8s ease-out infinite;pointer-events:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.01ms!important}}
+
+#topnav{display:none}
+@media(min-width:801px){
+ :root{--tn:58px}
+ #topnav{display:flex;align-items:center;gap:4px;position:fixed;z-index:2500;top:0;left:0;right:0;height:var(--tn);padding:0 16px;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);box-shadow:0 2px 14px rgba(0,0,0,.12);overflow-x:auto}
+ #topnav button{display:flex;align-items:center;gap:7px;padding:9px 15px;border:0;border-radius:10px;background:none;font:inherit;font-size:14.5px;color:var(--mut);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+ #topnav button:hover{background:var(--surf);color:var(--ink)}
+ #topnav button svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+ #topnav button.on{background:var(--accs);color:var(--acc);font-weight:650;box-shadow:inset 0 -2px 0 var(--gold)}
+ #topnav .sep{width:1px;height:26px;background:var(--line);margin:0 6px;flex:none}
+ aside{top:calc(var(--tn) + 12px);bottom:12px}
+ .hd nav{display:none}
+ #live,#srch{top:calc(var(--tn) + 12px)}
+ #loc{top:calc(var(--tn) + 80px)}
+ #fdet{top:calc(var(--tn) + 12px)}
+ #page{top:var(--tn)}
+ #pback,.pg-tabs{display:none}
+ body.mapfull aside{display:none}
+ body.mapfull #live{left:16px}
+}
 </style>
 </head>
 <body>
@@ -411,7 +553,7 @@ nav button{font-size:12px}
  <select id="yr" aria-label="Gazdasági év"></select></div>
 </header>
 <div class="farmbar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M5 20V10l7-5 7 5v10M10 20v-5h4v5"/></svg><select id="farm" aria-label="Gazdaság"></select><button class="btn alt" id="farmmg">Kezelés</button></div>
-<nav><button class="on" data-tab="fields"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Táblák</button><button data-tab="log"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Munkanapló</button><button data-tab="fin"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg>Pénzügy</button><button data-tab="stock"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>Készlet</button><button data-tab="data"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3 3 7 3s7-1.3 7-3v-6"/></svg>Adatok</button></nav>
+<nav><button data-tab="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg>Ma</button><button class="on" data-tab="fields"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Táblák</button><button data-tab="log"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Napló</button><button data-tab="fin"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg>Pénzügy</button><button data-tab="stock"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>Készlet</button><button data-tab="data"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3 3 7 3s7-1.3 7-3v-6"/></svg>Adatok</button></nav>
 </div>
 
 <section id="fields">
@@ -421,6 +563,7 @@ nav button{font-size:12px}
  <div class="mut" id="ehead" style="margin-top:12px"></div>
  <label for="en">Tábla neve</label><input id="en">
  <label for="ec">Növény</label><input id="ec">
+ <label for="eblk">Helyrajzi szám / MePAR blokk</label><input id="eblk" placeholder="pl. 0123/4 vagy KH12345-A">
  <div id="efarmw" class="hide"><label for="efarm">Gazdaság</label><select id="efarm"></select></div>
  <div class="btns">
   <button class="btn" id="esave">Mentés</button>
@@ -452,7 +595,9 @@ nav button{font-size:12px}
 </details>
 </section>
 
+<div id="logwrap">
 <section id="log" class="hide">
+<div class="seg" role="tablist"><button type="button" data-go="log" class="on">Új munka</button><button type="button" data-go="plan">Tervezett</button><button type="button" data-go="done">Elvégzett</button></div>
 <div class="cols"><div>
 <details id="lform" open><summary id="lsum">Új munka rögzítése</summary>
  <div class="g2">
@@ -461,7 +606,7 @@ nav button{font-size:12px}
  </div>
  <div class="g2">
   <div><label for="lt">Munka típusa</label><select id="lt"></select></div>
-  <div><label for="lw">Végezte</label><input id="lw" list="wl" placeholder="név"><datalist id="wl"></datalist></div>
+  <div><label for="lw">Végezte</label><select id="lw"></select><input id="lwo" class="hide" placeholder="A személy neve" autocomplete="off" style="margin-top:6px"></div>
  </div>
  <div id="lopw" class="hide"><label for="lop">Talajmunka művelete</label><select id="lop"></select></div>
  <div id="lvarw" class="hide"><label for="lvar">Mag fajtája</label><input id="lvar" list="vl" placeholder="pl. KWS Extase, DKC 4590"><datalist id="vl"></datalist></div>
@@ -481,6 +626,8 @@ nav button{font-size:12px}
   <div><label for="lu">Egység</label><select id="lu"><option>kg</option><option>l</option><option>db</option><option>t</option><option>zsák</option></select></div>
  </div>
  <div class="mut hide" id="lmath" style="margin-top:6px"></div>
+ <div id="lliqw" class="hide"><label for="lliq">Permetlé mennyisége (l/ha)</label><input id="lliq" type="number" step="any" min="0" inputmode="decimal" placeholder="pl. 200"></div>
+ <div class="mut" id="ldose" style="margin-top:6px"></div>
  <label for="ln">Megjegyzés</label><input id="ln" placeholder="pl. időjárás, tapasztalat">
  <label for="lc">Költség (Ft) · gazdálkodói adat</label><input id="lc" type="number" min="0" inputmode="numeric" placeholder="0">
  <div class="btns">
@@ -488,8 +635,12 @@ nav button{font-size:12px}
   <button class="btn alt hide" id="lcancel">Mégse</button>
  </div>
 </details>
-</div><div>
-<div class="g2" style="margin-top:16px">
+</div></div>
+</section>
+
+<section id="done" class="hide">
+<div class="seg" role="tablist"><button type="button" data-go="log">Új munka</button><button type="button" data-go="plan">Tervezett</button><button type="button" data-go="done" class="on">Elvégzett</button></div>
+<div class="g2" style="margin-top:4px">
  <select id="flt-f" aria-label="Szűrés táblára"></select>
  <select id="flt-t" aria-label="Szűrés munkatípusra"></select>
  <select id="flt-w" aria-label="Szűrés munkásra"></select>
@@ -499,8 +650,21 @@ nav button{font-size:12px}
 <div class="sumline" id="ltot"></div>
 <table><tbody id="llist"></tbody></table>
 <button class="btn alt" id="csv">Lista exportálása (CSV)</button>
-</div></div>
 </section>
+
+<section id="plan" class="hide">
+<div class="seg" role="tablist"><button type="button" data-go="log">Új munka</button><button type="button" data-go="plan" class="on">Tervezett</button><button type="button" data-go="done">Elvégzett</button></div>
+<details id="tkform" open><summary>Új teendő</summary>
+ <div class="g2"><div><label for="tkf">Tábla</label><select id="tkf"></select></div><div><label for="tkt">Munka típusa</label><select id="tkt"></select></div></div>
+ <div class="g2"><div><label for="tkd">Határidő</label><input id="tkd" type="date"></div><div><label for="tkw">Felelős</label><select id="tkw"></select></div></div>
+ <label for="tkn">Megjegyzés</label><input id="tkn" placeholder="pl. szélcsendes reggelen">
+ <div class="btns"><button class="btn" id="tkadd">Teendő felvétele</button></div>
+</details>
+<div id="tklist"></div>
+</section>
+</div>
+
+<section id="home" class="hide"></section>
 
 <section id="fin" class="hide">
 <p class="mut" style="margin:0 0 12px">Gazdálkodói rész: költségek, bevételek és eredmény. A belépéses változatban a munkások ezt a részt nem fogják látni.</p>
@@ -616,6 +780,36 @@ nav button{font-size:12px}
 </div>
 </section>
 
+<section id="rep" class="hide">
+<div class="cols"><div class="stack">
+<div class="card">
+ <div class="sh" style="margin-top:0">Gazdálkodó és szaktanácsadó adatai</div>
+ <p class="mut" style="margin:0 0 6px">Ezek kerülnek a nyomtatott napló fejlécébe (43/2010. FVM rendelet 30. § szerinti adatok). Az adatok csak ezen az eszközön tárolódnak.</p>
+ <label for="pfn">Gazdálkodó neve</label><input id="pfn" autocomplete="off">
+ <label for="pfa">Gazdálkodó címe</label><input id="pfa" autocomplete="off">
+ <label for="pff">FELIR azonosító</label><input id="pff" autocomplete="off" placeholder="pl. 12345678">
+ <label for="pfd">Növényvédelmi szaktanácsadó neve (ha van)</label><input id="pfd" autocomplete="off">
+ <label for="pfs">Szaktanácsadói engedély száma</label><input id="pfs" autocomplete="off">
+</div>
+<div class="card" id="repchk"></div>
+</div><div class="stack">
+<div class="card">
+ <div class="sh" style="margin-top:0">Nyomtatható jelentések</div>
+ <p class="mut" style="margin:0 0 10px" id="repper"></p>
+ <div class="repb">
+  <button class="btn" data-r="spray">Permetezési napló</button>
+  <button class="btn alt" data-r="work">Munkanapló összesítő</button>
+  <button class="btn alt" data-r="crop">Terménymérleg és hozamok</button>
+ </div>
+ <p class="mut" style="margin:12px 0 0">Megnyílik a nyomtatási ablak. Telefonon a Megosztás vagy a Nyomtatás menüből PDF-be is menthető.</p>
+</div>
+<div class="card">
+ <div class="sh" style="margin-top:0">Táblázatos exportok (CSV)</div>
+ <div class="repb"><button class="btn alt" data-r="csvspray">Permetezési napló</button><button class="btn alt" data-r="csvwork">Munkák</button></div>
+</div>
+</div></div>
+</section>
+
 <section id="data" class="hide">
 <div id="inst" class="cc" style="margin-bottom:18px">
  <h3 style="margin:0 0 6px;font-size:16px">Telepítés a telefonra</h3>
@@ -630,12 +824,19 @@ nav button{font-size:12px}
 <button class="btn alt" id="madd" style="margin-top:6px">+ Új gép felvétele</button>
 </div><div class="stack">
 <div class="card">
+<div class="sh" style="margin-top:0">Munkások</div>
+<p class="mut" style="margin:0 0 10px">Itt vedd fel egyszer a neveket. A munkanaplóban a „Végezte” mezőben legördülő menüből választhatók; ha valaki nincs itt, az „Egyéb” opcióval beírhatod a nevét.</p>
+<div class="g2" style="grid-template-columns:1fr auto"><input id="wnm" placeholder="pl. Kiss Pista" aria-label="Munkás neve" autocomplete="off"><button class="btn" id="wadd" style="margin:0">Felvétel</button></div>
+<div id="wlist"></div>
+</div>
+<div class="card">
 <div class="sh" style="margin-top:0">Vegyszerek és műtrágyák</div>
 <p class="mut" style="margin:0 0 10px">Itt vedd fel egyszer az anyagokat. A munkanaplóban permetezésnél a vegyszerek, műtrágyaszórásnál a műtrágyák közül lehet választani – a munkásnak nem kell beírnia.</p>
 <div class="g2" style="grid-template-columns:1fr 1fr"><div><label for="ank">Fajta</label><select id="ank"><option value="vegyszer">Vegyszer</option><option value="mutragya">Műtrágya</option><option value="vetomag">Vetőmag</option></select></div>
 <div><label for="anu">Mértékegység</label><select id="anu"><option>l</option><option>kg</option><option>t</option><option>db</option><option>zsák</option></select></div></div>
 <label for="ang" id="angl">Típus (nem kötelező)</label><input id="ang" list="agl" placeholder="pl. gyomirtó"><datalist id="agl"></datalist>
 <label for="anm">Megnevezés</label>
+<div id="anwrap"><label for="anw">Élelmezés-egészségügyi várakozási idő (nap)</label><input id="anw" type="number" min="0" step="1" inputmode="numeric" placeholder="pl. 14, a szer címkéjéről"></div>
 <div class="g2" style="grid-template-columns:1fr auto"><input id="anm" placeholder="pl. Karate Zeon, NPK 15-15-15" aria-label="Anyag neve"><button class="btn" id="anadd" style="margin:0">Felvétel</button></div>
 <div id="alist"></div>
 </div>
@@ -652,17 +853,19 @@ nav button{font-size:12px}
 </section>
 </aside>
 
+<div id="topnav" role="navigation" aria-label="Főmenü"><button type="button" data-top="map"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Térkép</button><span class="sep"></span><button type="button" data-top="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg>Ma</button><button type="button" data-top="fields"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Táblák</button><button type="button" data-top="log"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Napló</button><button type="button" data-top="stock"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-5 9 5v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M8 20v-7h8v7"/></svg>Készlet</button><button type="button" data-top="fin"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.5 9c-.6-1-1.6-1.4-2.5-1.4-1.4 0-2.4.8-2.4 1.9 0 2.8 5 1.4 5 4.2 0 1.1-1.1 1.9-2.6 1.9-1.1 0-2.2-.5-2.8-1.5M12 6v1.6M12 16.4V18"/></svg>Pénzügy</button><button type="button" data-top="rep"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>Jelentések</button><button type="button" data-top="data"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>Adatok</button></div>
 <div id="page" class="hide">
  <div class="pg-bar">
   <button class="btn alt" id="pback" style="margin:0">← Térkép</button>
   <div><h1 id="ptitle">Pénzügy</h1><div class="mut" id="psub"></div></div>
-  <div class="pg-tabs"><button data-p="fin">Pénzügy</button><button data-p="stock">Készlet</button><button data-p="data">Adatok</button></div>
+  <div class="pg-tabs"><button data-p="home">Ma</button><button data-p="fin">Pénzügy</button><button data-p="stock">Készlet</button><button data-p="rep">Jelentések</button><button data-p="data">Adatok</button></div>
   <select id="farm2" aria-label="Gazdaság" style="width:auto;min-width:150px;font-weight:600"></select>
   <select id="yr2" aria-label="Gazdasági év" style="width:auto;min-width:112px"></select>
  </div>
  <div id="pgbody"></div>
 </div>
-<div id="tabbar" role="navigation" aria-label="Fő menü"><button type="button" data-m="map" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>Térkép</button><button type="button" data-m="fields"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Táblák</button><button type="button" data-m="log"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Napló</button><button type="button" data-m="stock"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-5 9 5v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M8 20v-7h8v7"/></svg>Készlet</button><button type="button" data-m="fin"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.500 9.200c-.5-1-1.500-1.500-2.700-1.500-1.500 0-2.500.8-2.500 2s1 1.700 2.700 2.100c1.700.4 2.700 1 2.700 2.200s-1.100 2-2.700 2c-1.300 0-2.400-.6-2.900-1.700M12 6v1.700M12 16.300V18"/></svg>Pénz</button><button type="button" data-m="data"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.600"/><circle cx="12" cy="12" r="1.600"/><circle cx="19" cy="12" r="1.600"/></svg>Több</button></div>
+<div id="tabbar" role="navigation" aria-label="Fő menü"><button type="button" data-m="home" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg>Ma</button><button type="button" data-m="map"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Térkép</button><button type="button" data-m="fields"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Táblák</button><button type="button" data-m="log"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Napló</button><button type="button" data-m="stock"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-5 9 5v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M8 20v-7h8v7"/></svg>Készlet</button><button type="button" data-m="more"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>Több</button></div>
+<div id="moresheet" class="modal hide" role="dialog" aria-label="Több"><div class="mbox"><div class="msl"><button data-m="fin"><b>Pénzügy</b><span>Költségek, bevételek, eredmény</span></button><button data-m="rep"><b>Jelentések</b><span>Permetezési napló, nyomtatás, export</span></button><button data-m="data"><b>Adatok és beállítások</b><span>Gépek, anyagok, munkások, mentés</span></button><button data-m="scout"><b>Megfigyelés rögzítése</b><span>Terepbejárás fotóval</span></button></div></div></div>
 <button id="fab" type="button" aria-label="Új munka rögzítése"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Új munka</button>
 <div id="dbar" class="hide"><p id="dhint"></p><button class="btn alt" id="dundo" type="button">↶ Vissza</button><button class="btn alt" id="dcan" type="button">Mégse</button><button class="btn" id="dfin" type="button">Kész</button></div>
 <div id="map"></div>
@@ -676,6 +879,18 @@ nav button{font-size:12px}
 </div>
 <button id="loc" title="Saját helyzetem" aria-label="Saját helyzetem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button>
 
+<div id="smodal" class="modal hide" role="dialog" aria-modal="true" aria-label="Terepi megfigyelés"><div class="mbox">
+ <div class="sh" style="margin-top:0">Terepi megfigyelés</div>
+ <div class="g2"><div><label for="scf">Tábla</label><select id="scf"></select></div><div><label for="scd">Dátum</label><input id="scd" type="date"></div></div>
+ <label>Mit látsz?</label><div class="chips" id="scissue"></div>
+ <label>Súlyosság</label><div class="chips" id="scsev"></div>
+ <label for="scn">Megjegyzés</label><input id="scn" placeholder="pl. foltokban, a tábla szélén">
+ <label for="scph">Fénykép (nem kötelező)</label><input id="scph" type="file" accept="image/*" capture="environment">
+ <img id="scprev" class="hide" alt="Előnézet" style="width:100%;max-height:200px;object-fit:cover;border-radius:12px;margin-top:8px">
+ <div class="btns"><button class="btn" id="scsave">Mentés</button><button class="btn alt" id="sccancel">Mégse</button></div>
+</div></div>
+<div id="lbox" class="hide" role="dialog" aria-label="Fénykép"><img id="lbimg" alt="Nagyított fénykép"></div>
+<div id="printarea" aria-hidden="true"></div>
 <div id="mmodal" class="modal hide" role="dialog" aria-modal="true" aria-labelledby="mtitle">
  <div class="mbox">
   <div class="sh" id="mtitle" style="margin-top:0">Új gép felvétele</div>
@@ -731,11 +946,18 @@ function areaHa(p){const R=6378137,r=Math.PI/180;let s=0;
    hogy a későbbi belépéses változatban a munkások csak a munkát kapják meg. */
 function migrate(d){
  const arr=x=>Array.isArray(x)?x:[];
- const o={v:9,stock:arr(d.stock).filter(r=>r&&(r.mid!=null||r.crop)&&r.qty>0).map(r=>Object.assign({},r)),farms:arr(d.farms).filter(f=>f&&f.name).map(f=>({id:f.id||uid(),name:String(f.name)})),curFarm:'',mats:arr(d.mats).filter(m=>m&&m.name&&(m.kind==='vegyszer'||m.kind==='mutragya'||m.kind==='vetomag')).map(m=>({id:m.id||uid(),name:String(m.name),kind:m.kind,unit:m.unit||(m.kind==='vegyszer'?'l':'kg'),group:m.group?String(m.group):''})),fields:arr(d.fields),logs:[],machines:arr(d.machines),costs:arr(d.costs),revs:arr(d.revs),colors:d.colors&&typeof d.colors==='object'&&!Array.isArray(d.colors)?d.colors:{},customOps:arr(d.customOps).filter(x=>x&&x.n)};
+ const o={v:11,workers:arr(d.workers).filter(w=>w&&w.name).map(w=>({id:w.id||uid(),name:String(w.name).trim()})),stock:arr(d.stock).filter(r=>r&&(r.mid!=null||r.crop)&&r.qty>0).map(r=>Object.assign({},r)),farms:arr(d.farms).filter(f=>f&&f.name).map(f=>({id:f.id||uid(),name:String(f.name)})),curFarm:'',mats:arr(d.mats).filter(m=>m&&m.name&&(m.kind==='vegyszer'||m.kind==='mutragya'||m.kind==='vetomag')).map(m=>({id:m.id||uid(),name:String(m.name),kind:m.kind,unit:m.unit||(m.kind==='vegyszer'?'l':'kg'),group:m.group?String(m.group):'',wait:m.wait!=null&&m.wait!==''&&+m.wait>=0?Math.round(+m.wait):null})),fields:arr(d.fields),logs:[],machines:arr(d.machines),costs:arr(d.costs),revs:arr(d.revs),colors:d.colors&&typeof d.colors==='object'&&!Array.isArray(d.colors)?d.colors:{},customOps:arr(d.customOps).filter(x=>x&&x.n)};
+ o.tasks=arr(d.tasks).filter(t=>t&&t.id!=null&&t.date).map(t=>({id:t.id,fid:t.fid||null,type:String(t.type||''),date:String(t.date),worker:String(t.worker||''),note:String(t.note||''),done:!!t.done}));
+ o.scouts=arr(d.scouts).filter(x=>x&&x.id!=null&&x.fid!=null).map(x=>({id:x.id,fid:x.fid,date:String(x.date||''),issue:String(x.issue||'Egyéb'),sev:Math.min(5,Math.max(1,Math.round(+x.sev)||1)),note:String(x.note||''),photo:!!x.photo}));
+ o.profile=Object.assign({name:'',addr:'',felir:'',adv:'',advNo:''},d.profile&&typeof d.profile==='object'&&!Array.isArray(d.profile)?d.profile:{});
  arr(d.logs).forEach(l=>{
   const n=Object.assign({},l),c=+n.cost||0;delete n.cost;o.logs.push(n);
   if(c>0&&!o.costs.some(x=>x.lid===n.id))o.costs.push({id:uid(),fid:n.fid,lid:n.id,date:n.date,cat:'Munka',desc:n.type,amt:c});
  });
+ if(!Array.isArray(d.workers)){const seen=new Set();arr(d.logs).forEach(l=>{const n=String(l.worker||'').trim();if(n&&!seen.has(n.toLowerCase())){seen.add(n.toLowerCase());o.workers.push({id:uid(),name:n})}})}
+ o.workers=o.workers.filter((w,i,a)=>w.name&&a.findIndex(x=>x.name.toLowerCase()===w.name.toLowerCase())===i);
+ const TK={'Vetés':'vetomag','Permetezés':'vegyszer','Tápanyag-utánpótlás':'mutragya'};
+ o.logs.forEach(l=>{const k=TK[l.type],nm=String(l.mat||'').trim();if(!k||!nm||!(l.qty>0))return;if(!o.mats.some(m=>m.name.toLowerCase()===nm.toLowerCase()))o.mats.push({id:uid(),name:nm,kind:k,unit:l.unit||(k==='vegyszer'?'l':'kg'),group:''})});
  o.machines.forEach(m=>{if(!m.type)m.type='egyeb';if(isImpl(m.type))m.hours=null});
  const implIds=new Set(o.machines.filter(m=>isImpl(m.type)).map(m=>m.id));
  o.logs.forEach(l=>{if(l.mid!=null&&implIds.has(l.mid)){if(l.iid==null)l.iid=l.mid;l.mid=null;l.h0=null;l.h1=null}});
@@ -743,6 +965,7 @@ function migrate(d){
  o.revs=o.revs.filter(r=>r.fids.length);
  o.fields.forEach(f=>{if(typeof f.area!=='number')f.area=areaHa(f.coords);if(f.farm&&!o.farms.some(x=>x.id===f.farm))delete f.farm});
  o.costs.forEach(c=>{if(c.farm&&!o.farms.some(x=>x.id===c.farm))delete c.farm});
+ o.scouts=o.scouts.filter(x=>o.fields.some(f=>f.id===x.fid));o.tasks=o.tasks.filter(t=>!t.fid||o.fields.some(f=>f.id===t.fid));
  o.curFarm=o.farms.some(x=>x.id===d.curFarm)?d.curFarm:'';
  o.stock=o.stock.filter(r=>r.crop||o.mats.some(m=>m.id===r.mid));
  o.stock.forEach(r=>{if(r.farm&&!o.farms.some(x=>x.id===r.farm))delete r.farm});
@@ -833,7 +1056,7 @@ function renderFields(){
  const row=$('#flist').querySelector(`.row[data-id="${f.id}"]`);
  if(row&&!inDr)row.after(pop);
  pop.classList.remove('hide');
- if(cardFor!==f.id){$('#en').value=f.name;$('#ec').value=f.crop||'';$('#efarm').value=f.farm||'';cardFor=f.id}
+ if(cardFor!==f.id){$('#en').value=f.name;$('#ec').value=f.crop||'';$('#eblk').value=f.blk||'';$('#efarm').value=f.farm||'';cardFor=f.id}
  $('#ehead').textContent='Terület: '+f.area.toFixed(2)+' ha';
 }
 function ui(){
@@ -914,7 +1137,7 @@ $('#bsave').onclick=()=>{
 $('#esave').onclick=()=>{
  const f=S.fields.find(x=>x.id===popId);if(!f)return;
  const n=$('#en').value.trim();if(!n){toast('A tábla neve nem lehet üres.');return}
- f.name=n;f.crop=$('#ec').value.trim();{const fv=+$('#efarm').value;if(fv)f.farm=fv;else delete f.farm}save();popId=null;cardFor=null;if(dmode==='field')dmode='view';render();toast('A tábla adatai elmentve.')};
+ f.name=n;f.crop=$('#ec').value.trim();f.blk=$('#eblk').value.trim();{const fv=+$('#efarm').value;if(fv)f.farm=fv;else delete f.farm}save();popId=null;cardFor=null;if(dmode==='field')dmode='view';render();toast('A tábla adatai elmentve.')};
 $('#pclose').onclick=()=>{if(edit){toast('Előbb mentsd vagy vesd el a határ módosítását.');return}popId=null;if(dmode==='field')dmode='view';render()};
 $('#flist').onclick=e=>{
  if(e.target.closest('#fpop'))return;
@@ -941,6 +1164,34 @@ $('#flist').onclick=e=>{
  if(r){selectField(+r.dataset.id,true);openDetail(+r.dataset.id)}};
 
 
+
+/* ---------- Munkások ---------- */
+function renderWorkerSel(){
+ const s=$('#lw'),cur=getWorker();
+ s.innerHTML='<option value="">— nincs megadva —</option>'+S.workers.slice().sort((a,b)=>a.name.localeCompare(b.name,'hu')).map(w=>`<option value="${esc(w.name)}">${esc(w.name)}</option>`).join('')+'<option value="__o">Egyéb (beírom)</option>';
+ setWorker(cur)}
+function getWorker(){const s=$('#lw');return s.value==='__o'?$('#lwo').value.trim():s.value}
+function setWorker(n){
+ const s=$('#lw');n=String(n||'').trim();
+ if(!n){s.value='';$('#lwo').value='';$('#lwo').classList.add('hide');return}
+ const hit=S.workers.find(w=>w.name.toLowerCase()===n.toLowerCase());
+ if(hit){s.value=hit.name;$('#lwo').value='';$('#lwo').classList.add('hide')}
+ else{s.value='__o';$('#lwo').value=n;$('#lwo').classList.remove('hide')}}
+$('#lw').onchange=()=>{const o=$('#lw').value==='__o';$('#lwo').classList.toggle('hide',!o);if(o){$('#lwo').value='';$('#lwo').focus()}};
+function renderWorkers(){
+ const n=name=>S.logs.filter(l=>(l.worker||'').toLowerCase()===name.toLowerCase()).length;
+ $('#wlist').innerHTML=S.workers.length?S.workers.slice().sort((a,b)=>a.name.localeCompare(b.name,'hu')).map(w=>`<div class="arow"><span><b>${esc(w.name)}</b></span><span class="mut">${n(w.name)} munka</span><button class="x" data-wd="${w.id}" title="Törlés" aria-label="${esc(w.name)} törlése">✕</button></div>`).join(''):'<p class="mut" style="margin:10px 0 0">Még nincs felvett munkás.</p>'}
+$('#wadd').onclick=()=>{
+ const name=$('#wnm').value.trim();
+ if(!name){toast('Add meg a munkás nevét.');return}
+ if(S.workers.some(w=>w.name.toLowerCase()===name.toLowerCase())){toast('Ez a név már fel van véve.');return}
+ S.workers.push({id:uid(),name});save();$('#wnm').value='';render();toast('A munkás felvéve.')};
+$('#wnm').onkeydown=e=>{if(e.key==='Enter')$('#wadd').onclick()};
+$('#wlist').onclick=e=>{
+ const b=e.target.closest('button');if(!b||!b.dataset.wd)return;
+ const w=S.workers.find(x=>String(x.id)===b.dataset.wd);if(!w)return;
+ if(confirm('Törlöd a nevet a listából? A korábbi munkák megőrzik a nevét.')){S.workers=S.workers.filter(x=>x!==w);save();render()}};
+
 /* ---------- Vegyszerek és műtrágyák ---------- */
 function matKind(){
  const m=S.machines.find(x=>x.id==$('#lm').value),i=S.machines.find(x=>x.id==$('#li').value),t=$('#lt').value;
@@ -965,7 +1216,7 @@ function matUI(){
  if(!items.length){sel.classList.add('hide');inp.classList.remove('hide');hint.classList.remove('hide');hint.textContent='Még nincs felvett '+KL[k][1]+'. Az Adatok oldalon egyszer felveheted, és innen választható lesz.';return}
  hint.classList.add('hide');
  const cur=inp.value.trim(),hit=items.find(x=>x.name===cur);
- sel.innerHTML='<option value="">— válassz —</option>'+items.map(x=>`<option value="${x.id}">${esc(x.name)}${x.group?' · '+esc(x.group):''} (${esc(x.unit)})</option>`).join('')+'<option value="__o">Más (beírom)</option>';
+ sel.innerHTML='<option value="">— válassz —</option>'+items.map(x=>`<option value="${x.id}">${esc(x.name)}</option>`).join('')+'<option value="__o">Más (beírom)</option>';
  sel.value=hit?String(hit.id):cur?'__o':'';
  sel.classList.remove('hide');inp.classList.toggle('hide',sel.value!=='__o')}
 $('#lmats').onchange=()=>{
@@ -978,11 +1229,11 @@ const GSUG={vetomag:['kukorica','búza','árpa','napraforgó','repce','zab','roz
 function renderMats(){
  const grp=(k,t)=>{
   const xs=S.mats.filter(x=>x.kind===k).sort((a,b)=>(a.group||'').localeCompare(b.group||'','hu')||a.name.localeCompare(b.name,'hu'));
-  return `<div class="mgh">${t}</div>`+(xs.length?xs.map(x=>`<div class="arow"><span><b>${esc(x.name)}</b> <span class="mut">${esc(x.unit)}${x.group?' · '+esc(x.group):''}</span></span><span class="mut">${S.logs.filter(l=>l.mat===x.name).length} munkában</span><button class="x" data-ad="${x.id}" title="Törlés" aria-label="${esc(x.name)} törlése">✕</button></div>`).join(''):'<p class="mut" style="margin:0">Még nincs felvéve.</p>')};
+  return `<div class="mgh">${t}</div>`+(xs.length?xs.map(x=>`<div class="arow"><span><b>${esc(x.name)}</b> <span class="mut">${esc(x.unit)}${x.group?' · '+esc(x.group):''}${x.kind==='vegyszer'?(x.wait!=null?' · várakozás: '+x.wait+' nap':' · várakozási idő nincs megadva'):''}</span></span><span class="mut">${S.logs.filter(l=>l.mat===x.name).length} munkában</span><button class="x" data-ad="${x.id}" title="Törlés" aria-label="${esc(x.name)} törlése">✕</button></div>`).join(''):'<p class="mut" style="margin:0">Még nincs felvéve.</p>')};
  $('#alist').innerHTML=grp('vegyszer','Vegyszerek')+grp('mutragya','Műtrágyák')+grp('vetomag','Vetőmagok');
  angUI()}
 function angUI(){
- const k=$('#ank').value;
+ const k=$('#ank').value;$('#anwrap').classList.toggle('hide',k!=='vegyszer');
  $('#angl').textContent=k==='vetomag'?'Növény (pl. kukorica, búza)':k==='vegyszer'?'Típus (nem kötelező, pl. gyomirtó)':'Típus (nem kötelező, pl. NPK)';
  const gs=[...new Set([...(GSUG[k]||[]),...S.mats.filter(m=>m.kind===k&&m.group).map(m=>m.group)])];
  $('#agl').innerHTML=gs.map(g=>`<option value="${esc(g)}">`).join('')}
@@ -990,7 +1241,7 @@ $('#anadd').onclick=()=>{
  const name=$('#anm').value.trim(),kind=$('#ank').value;
  if(!name){toast('Add meg az anyag nevét.');return}
  if(S.mats.some(x=>x.kind===kind&&x.name.toLowerCase()===name.toLowerCase())){toast('Ez már fel van véve.');return}
- S.mats.push({id:uid(),name,kind,unit:$('#anu').value,group:$('#ang').value.trim()});save();$('#anm').value='';render();toast('Az anyag felvéve.')};
+ S.mats.push({id:uid(),name,kind,unit:$('#anu').value,group:$('#ang').value.trim(),wait:kind==='vegyszer'&&$('#anw').value!==''?Math.max(0,Math.round(+$('#anw').value)):null});save();$('#anm').value='';$('#anw').value='';render();toast('Az anyag felvéve.')};
 $('#anm').onkeydown=e=>{if(e.key==='Enter')$('#anadd').onclick()};
 $('#ank').onchange=()=>{$('#anu').value=$('#ank').value==='vegyszer'?'l':'kg';angUI()};
 $('#alist').onclick=e=>{
@@ -1325,10 +1576,14 @@ $('#ccsv').onclick=()=>{
 
 /* ---------- Telefonos kezelés, telepítés ---------- */
 const phone=()=>matchMedia('(max-width:800px)').matches;
-function mobTab(t){$$('#tabbar button').forEach(b=>b.classList.toggle('on',b.dataset.m===t))}
+function mobTab(t){const k={fin:'more',rep:'more',data:'more',plan:'log',done:'log'}[t]||t;$$('#tabbar button').forEach(b=>b.classList.toggle('on',b.dataset.m===k))}
 function mobGo(t){
+ if(t==='more'){$('#moresheet').classList.remove('hide');return}
+ if(t==='scout'){$('#moresheet').classList.add('hide');openScout();return}
+ $('#moresheet').classList.add('hide');
  if(t==='map'){closePage();closeDetail();document.body.classList.add('mapmode');mobTab('map');return}
  document.body.classList.remove('mapmode');goTab(t)}
+$('#moresheet').onclick=e=>{if(e.target===$('#moresheet'))$('#moresheet').classList.add('hide');const b=e.target.closest('button[data-m]');if(b)mobGo(b.dataset.m)};
 $$('#tabbar button').forEach(b=>b.onclick=()=>mobGo(b.dataset.m));
 $('#fab').onclick=()=>{mobGo('log');const a=$('aside');if(a)a.scrollTop=0};
 function mobDraw(){
@@ -1349,6 +1604,294 @@ window.addEventListener('appinstalled',()=>{$('#instst').textContent='Telepítve
 if(matchMedia('(display-mode: standalone)').matches||navigator.standalone){$('#inst').classList.add('hide')}
 if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+
+
+/* ---------- Mozgás: belépő animációk, számláló ---------- */
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function countUp(el){
+ el.querySelectorAll('.kt b,.kv3 b,.srow .big,.donut text').forEach(n=>{
+  if(n.children.length)return;
+  const t=n.textContent,m=t.match(/^([+−\-]?)(\d+(?:[\s  ]\d{3})*(?:[.,]\d+)?)(.*)$/);if(!m)return;
+  const raw=m[2],v=parseFloat(raw.replace(/[\s  ]/g,'').replace(',','.'));
+  if(!isFinite(v)||v<=0)return;
+  const dm=raw.match(/[.,](\d+)$/),dec=dm?dm[1].length:0,ds=raw.includes(',')?',':'.',gm=raw.match(/[\s  ]/),gs=gm?gm[0]:'';
+  const fmtN=x=>{const [i,f]=x.toFixed(dec).split('.');return (gs?i.replace(/\B(?=(\d{3})+(?!\d))/g,gs):i)+(f?ds+f:'')};
+  const t0=performance.now(),D=900;
+  const step=now=>{const k=Math.max(0,Math.min(1,(now-t0)/D)),e=1-Math.pow(1-k,3);
+   if(k<1){n.textContent=m[1]+fmtN(v*e)+m[3];requestAnimationFrame(step)}else n.textContent=t};
+  n.textContent=m[1]+fmtN(0)+m[3];requestAnimationFrame(step);setTimeout(()=>{n.textContent=t},D+250)})}
+function enter(el){
+ if(!el||RM||!el.querySelectorAll)return;
+ el.classList.remove('enter');void el.offsetWidth;
+ let i=0;el.querySelectorAll('.cc,.kt,.fcc,.srow,.arow,.sumline,details,.card,.hb,tbody>tr,.kv3,.tl>*').forEach(x=>x.style.setProperty('--i',Math.min(i++,14)));
+ el.classList.add('enter');countUp(el);
+ clearTimeout(el._et);el._et=setTimeout(()=>el.classList.remove('enter'),1800)}
+
+
+/* ---------- Várakozási idő, adag/ha ---------- */
+function addDays(iso,n){const d=new Date(iso+'T00:00:00Z');if(isNaN(d))return iso;d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)}
+function pendingWait(fid,date){
+ let best=null;
+ S.logs.forEach(l=>{
+  if(l.fid!==fid||l.type!=='Permetezés'||!(l.wait>0)||!l.date)return;
+  const until=addDays(l.date,l.wait);
+  if(until>date&&(!best||until>best.until))best={l,until}});
+ return best}
+function doseUI(){
+ const el=$('#ldose');if(!el)return;
+ const t=$('#lt').value,f=S.fields.find(x=>String(x.id)===String($('#lf').value)),q=pn($('#lq').value),u=$('#lu').value;
+ if(!f||!(q>0)||!f.area||!['Permetezés','Tápanyag-utánpótlás','Vetés'].includes(t)){el.textContent='';return}
+ el.textContent='≈ '+num(q/f.area)+' '+u+'/ha ('+f.area.toFixed(2)+' ha-ra számolva)'}
+['#lq','#lu','#lf','#lt'].forEach(s=>{$(s).addEventListener('input',doseUI);$(s).addEventListener('change',doseUI)});
+
+/* ---------- Terepi megfigyelések (fotóval) ---------- */
+const SI=['Gyomosodás','Betegség','Kártevő','Vízhiány','Fagy- vagy jégkár','Belvíz','Tápanyaghiány','Egyéb'];
+let sSev=2,sIssue='Gyomosodás',sBlob=null;
+function idb(){return new Promise((ok,no)=>{try{const r=indexedDB.open('gazd-fotok',1);r.onupgradeneeded=()=>r.result.createObjectStore('p');r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)}catch(e){no(e)}})}
+const putPhoto=(id,blob)=>idb().then(db=>new Promise((ok,no)=>{const t=db.transaction('p','readwrite');t.objectStore('p').put(blob,id);t.oncomplete=ok;t.onerror=()=>no(t.error)}));
+const getPhoto=id=>idb().then(db=>new Promise((ok,no)=>{const r=db.transaction('p').objectStore('p').get(id);r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)}));
+const delPhoto=id=>idb().then(db=>new Promise(ok=>{const t=db.transaction('p','readwrite');t.objectStore('p').delete(id);t.oncomplete=ok;t.onerror=ok})).catch(()=>{});
+function shrink(file){return new Promise((ok,no)=>{
+ const u=URL.createObjectURL(file),im=new Image();
+ im.onload=()=>{const k=Math.min(1,1280/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);c.toBlob(b=>b?ok(b):no(new Error('blob')),'image/jpeg',.74)};
+ im.onerror=()=>{URL.revokeObjectURL(u);no(new Error('img'))};im.src=u})}
+function loadPhotos(root){
+ if(!root||!root.querySelectorAll)return;
+ root.querySelectorAll('img[data-ph]').forEach(im=>{
+  getPhoto(+im.dataset.ph).then(b=>{if(b)im.src=URL.createObjectURL(b);else im.closest('.ph2')&&im.closest('.ph2').remove()}).catch(()=>{im.closest('.ph2')&&im.closest('.ph2').remove()})})}
+const sevDots=n=>'<span class="sev" title="Súlyosság: '+n+'/5">'+[1,2,3,4,5].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')+'</span>';
+function scoutRow(s,withField){
+ const f=S.fields.find(x=>x.id===s.fid);
+ return `<div class="sc"><div class="sct"><b>${esc(s.issue)}</b>${sevDots(s.sev)}<span class="mut">${fmtD(s.date)}${withField&&f?' · '+esc(f.name):''}</span><button class="x" data-sdel="${s.id}" title="Törlés" aria-label="Megfigyelés törlése">✕</button></div>${s.note?`<div class="mut">${esc(s.note)}</div>`:''}${s.photo?`<div class="ph2"><img data-ph="${s.id}" alt="Fénykép: ${esc(s.issue)}" loading="lazy"></div>`:''}</div>`}
+function scoutHtml(fid){
+ const xs=S.scouts.filter(s=>s.fid===fid).sort((a,b)=>String(b.date).localeCompare(String(a.date))||b.id-a.id).slice(0,6);
+ return `<div class="dsec">Megfigyelések <small>terepbejárás</small></div>`+(xs.length?xs.map(s=>scoutRow(s,false)).join(''):'<p class="mut">Még nincs megfigyelés. A „Megfigyelés” gombbal rögzíthetsz fotóval is.</p>')}
+function openScout(fid){
+ if(!S.fields.length){toast('Előbb vegyél fel egy táblát.');return}
+ $('#scf').innerHTML=S.fields.map(f=>`<option value="${f.id}">${esc(f.name)}</option>`).join('');
+ $('#scf').value=fid&&S.fields.some(f=>f.id===fid)?fid:S.fields[0].id;
+ $('#scd').value=today();$('#scn').value='';sSev=2;sIssue='Gyomosodás';sBlob=null;$('#scph').value='';$('#scprev').classList.add('hide');
+ scoutChips();$('#smodal').classList.remove('hide')}
+function scoutChips(){
+ $('#scissue').innerHTML=SI.map(x=>`<button type="button" class="qb${x===sIssue?' on':''}" data-si="${esc(x)}">${esc(x)}</button>`).join('');
+ $('#scsev').innerHTML=[1,2,3,4,5].map(n=>`<button type="button" class="qb${n===sSev?' on':''}" data-sv="${n}" style="min-width:44px">${n}</button>`).join('')+'<span class="mut" style="align-self:center;margin-left:6px">1 = enyhe, 5 = súlyos</span>'}
+$('#scissue').onclick=e=>{const b=e.target.closest('button');if(b){sIssue=b.dataset.si;scoutChips()}};
+$('#scsev').onclick=e=>{const b=e.target.closest('button');if(b){sSev=+b.dataset.sv;scoutChips()}};
+$('#scph').onchange=e=>{
+ const f=e.target.files&&e.target.files[0];if(!f){sBlob=null;return}
+ shrink(f).then(b=>{sBlob=b;const im=$('#scprev');im.src=URL.createObjectURL(b);im.classList.remove('hide')}).catch(()=>{sBlob=null;toast('A fotót nem sikerült feldolgozni.')})};
+$('#sccancel').onclick=()=>$('#smodal').classList.add('hide');
+$('#scsave').onclick=()=>{
+ const fid=+$('#scf').value;if(!fid||!$('#scd').value){toast('Add meg a táblát és a dátumot.');return}
+ const s={id:uid(),fid,date:$('#scd').value,issue:sIssue,sev:sSev,note:$('#scn').value.trim(),photo:false};
+ const fin=()=>{S.scouts.push(s);save();$('#smodal').classList.add('hide');render();toast('A megfigyelés rögzítve.')};
+ if(sBlob)putPhoto(s.id,sBlob).then(()=>{s.photo=true;fin()}).catch(()=>{toast('A fotót nem sikerült elmenteni, a megfigyelés fotó nélkül kerül mentésre.');fin()});
+ else fin()};
+document.addEventListener('click',e=>{
+ const d=e.target.closest('[data-sdel]');
+ if(d){if(confirm('Törlöd ezt a megfigyelést?')){const id=+d.dataset.sdel;S.scouts=S.scouts.filter(x=>x.id!==id);delPhoto(id);save();render()}return}
+ const im=e.target.closest('.ph2 img');
+ if(im&&im.src){$('#lbimg').src=im.src;$('#lbox').classList.remove('hide')}});
+$('#lbox').onclick=()=>$('#lbox').classList.add('hide');
+$('#smodal').onclick=e=>{if(e.target===$('#smodal'))$('#smodal').classList.add('hide')};
+
+
+/* ---------- Tervezett teendők ---------- */
+function dayDiff(iso){return Math.round((new Date(iso+'T00:00:00')-new Date(today()+'T00:00:00'))/864e5)}
+function dueTxt(iso){const d=dayDiff(iso);return d<0?(-d)+' napja késik':d===0?'ma':d===1?'holnap':d<8?d+' nap múlva':fmtD(iso)}
+function renderPlan(){
+ fillSel('#tkf',VF().map(f=>`<option value="${f.id}">${esc(f.name)}</option>`).join(''));
+ fillSel('#tkt',TYPES.map(t=>`<option>${esc(t)}</option>`).join(''));
+ fillSel('#tkw','<option value="">— nincs kijelölve —</option>'+S.workers.slice().sort((a,b)=>a.name.localeCompare(b.name,'hu')).map(w=>`<option value="${esc(w.name)}">${esc(w.name)}</option>`).join(''));
+ if(!$('#tkd').value)$('#tkd').value=today();
+ const ts=S.tasks.filter(t=>!t.fid||scope(fieldFarm(t.fid))),open=ts.filter(t=>!t.done).sort((a,b)=>a.date.localeCompare(b.date)),done=ts.filter(t=>t.done).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,5);
+ const row=t=>{const d=dayDiff(t.date),f=S.fields.find(x=>x.id===t.fid);
+  return `<div class="tk${d<0&&!t.done?' late':''}${t.done?' done':''}"><span class="dot" style="background:${colorOf(t.type)}"></span><div class="tkb"><b>${esc(t.type||'Munka')}</b>${f?' · '+esc(f.name):''}<div class="mut">${t.done?'Elvégezve · ':''}<span class="${d<0&&!t.done?'neg':''}">${t.done?fmtD(t.date):dueTxt(t.date)}</span>${t.worker?' · '+esc(t.worker):''}${t.note?' · '+esc(t.note):''}</div></div>${t.done?'':`<button class="qb" data-tdone="${t.id}">Elvégeztem</button>`}<button class="x" data-tdel="${t.id}" title="Törlés" aria-label="Teendő törlése">✕</button></div>`};
+ $('#tklist').innerHTML=(open.length?'<div class="sh">Nyitott teendők</div>'+open.map(row).join(''):'<p class="mut" style="margin-top:16px">Nincs nyitott teendő. Vegyél fel egyet fent, és a Ma oldalon is megjelenik.</p>')+(done.length?'<div class="sh">Legutóbb elvégezve</div>'+done.map(row).join(''):'')}
+$('#tkadd').onclick=()=>{
+ const fid=+$('#tkf').value||null,date=$('#tkd').value;
+ if(!date){toast('Add meg a határidőt.');return}
+ S.tasks.push({id:uid(),fid,type:$('#tkt').value,date,worker:$('#tkw').value,note:$('#tkn').value.trim(),done:false});
+ save();$('#tkn').value='';render();toast('A teendő felvéve.')};
+function taskAction(e){
+ const b=e.target.closest('button');if(!b)return false;
+ if(b.dataset.tdel){const id=+b.dataset.tdel;if(confirm('Törlöd ezt a teendőt?')){S.tasks=S.tasks.filter(t=>t.id!==id);save();render()}return true}
+ if(b.dataset.tdone){
+  const t=S.tasks.find(x=>x.id===+b.dataset.tdone);if(!t)return true;
+  t.done=true;save();render();mobGo('log');
+  if(elog)clearLog();
+  if(t.fid)$('#lf').value=t.fid;
+  $('#lt').value=t.type||'Egyéb';lupd();$('#ld').value=today();setWorker(t.worker);$('#ln').value=t.note||'';
+  toast('Töltsd ki a részleteket, és mentsd el a munkát.');return true}
+ return false}
+$('#tklist').onclick=taskAction;
+
+/* ---------- Időjárás (Open-Meteo, kulcs nélkül) ---------- */
+let WX=null;try{WX=JSON.parse(localStorage.getItem('gazd-wx'))}catch(e){}
+function homePoint(){
+ const fs=VF().filter(f=>f.coords&&f.coords.length);
+ if(fs.length){let la=0,ln=0;fs.forEach(f=>{let a=0,b=0;f.coords.forEach(c=>{a+=c[0];b+=c[1]});la+=a/f.coords.length;ln+=b/f.coords.length});return [la/fs.length,ln/fs.length]}
+ try{const c=map.getCenter();return [c.lat,c.lng]}catch(e){return [47.2,19.4]}}
+async function loadWx(force){
+ const [la,ln]=homePoint(),key=la.toFixed(2)+','+ln.toFixed(2);
+ if(!force&&WX&&WX.j&&WX.key===key&&Date.now()-WX.ts<30*60e3){wxRender();return}
+ wxRender(true);
+ try{
+  const u='https://api.open-meteo.com/v1/forecast?latitude='+la.toFixed(3)+'&longitude='+ln.toFixed(3)+'&current=temperature_2m,weather_code,wind_speed_10m,precipitation&hourly=temperature_2m,precipitation,wind_speed_10m,soil_temperature_6cm&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max,wind_gusts_10m_max&past_days=7&forecast_days=7&timezone=auto&wind_speed_unit=ms';
+  const r=await fetch(u);if(!r.ok)throw new Error('http');const j=await r.json();
+  if(!j||!j.daily)throw new Error('data');
+  WX={key,ts:Date.now(),j};try{localStorage.setItem('gazd-wx',JSON.stringify(WX))}catch(e){}
+ }catch(e){if(WX&&WX.j)WX.stale=true;else WX={err:true}}
+ wxRender();renderHomeAlerts()}
+function wxIcon(c){
+ const g=c===0?'sun':c<=3?'pc':c<=48?'fog':c<=57?'rain':c<=67?'rain':c<=77?'snow':c<=82?'rain':'storm';
+ const P={sun:'<circle cx="12" cy="12" r="4.5"/><path d="M12 2.500v2.500M12 19v2.500M2.500 12H5M19 12h2.500M5.300 5.300l1.800 1.800M16.900 16.900l1.800 1.800M5.300 18.700l1.800-1.800M16.900 7.100l1.800-1.800"/>',pc:'<circle cx="8.500" cy="8.500" r="3"/><path d="M8.500 2.500v1M2.500 8.500h1M4.300 4.300l.7.7M17 18H8a3.500 3.500 0 1 1 .6-6.950A4.500 4.500 0 0 1 17 12.500a2.750 2.750 0 0 1 0 5.500z"/>',fog:'<path d="M4 9h16M3 13h18M6 17h12"/>',rain:'<path d="M17 14H8a3.500 3.500 0 1 1 .6-6.950A4.500 4.500 0 0 1 17 8.500a2.750 2.750 0 0 1 0 5.500zM8 17l-1 3M12 17l-1 3M16 17l-1 3"/>',snow:'<path d="M17 14H8a3.500 3.500 0 1 1 .6-6.950A4.500 4.500 0 0 1 17 8.500a2.750 2.750 0 0 1 0 5.500zM8 18h.01M12 19h.01M16 18h.01"/>',storm:'<path d="M17 13H8a3.500 3.500 0 1 1 .6-6.950A4.500 4.500 0 0 1 17 7.500a2.750 2.750 0 0 1 0 5.500zM12.500 13l-2 3.500h3l-2 3.500"/>'};
+ return `<svg viewBox="0 0 24 24" class="wi" aria-hidden="true">${P[g]}</svg>`}
+const WTXT=c=>c===0?'Derült':c<=2?'Részben felhős':c===3?'Borult':c<=48?'Ködös':c<=57?'Szitálás':c<=67?'Eső':c<=77?'Havazás':c<=82?'Zápor':'Zivatar';
+function spray(w,g,p){return (w<=4&&g<=7&&p<.3)?{c:'good',t:'Jó'}:(w<=6&&g<=9&&p<1.5)?{c:'mid',t:'Óvatosan'}:{c:'bad',t:'Nem ajánlott'}}
+function wxModel(){
+ if(!WX||!WX.j)return null;
+ const j=WX.j,D=j.daily,ti=D.time.indexOf(today());if(ti<0)return null;
+ const days=[];for(let i=ti;i<Math.min(D.time.length,ti+7);i++)days.push({d:D.time[i],code:D.weather_code[i],tmax:D.temperature_2m_max[i],tmin:D.temperature_2m_min[i],rain:D.precipitation_sum[i]||0,wind:D.wind_speed_10m_max[i]||0,gust:D.wind_gusts_10m_max[i]||0});
+ days.forEach(x=>x.sp=spray(x.wind,x.gust,x.rain));
+ let past=0;for(let i=Math.max(0,ti-7);i<ti;i++)past+=D.precipitation_sum[i]||0;
+ const H=j.hourly;let best=null,run=null;
+ if(H&&H.time)H.time.forEach((t,i)=>{if(t.slice(0,10)!==today())return;const hr=+t.slice(11,13);
+  const ok=hr>=6&&hr<=20&&(H.wind_speed_10m[i]||0)<=4&&(H.precipitation[i]||0)<.1;
+  if(ok){if(!run)run={a:hr,b:hr};else run.b=hr}else{if(run&&(!best||run.b-run.a>best.b-best.a))best=run;run=null}});
+ if(run&&(!best||run.b-run.a>best.b-best.a))best=run;
+ const c=j.current||{};let soil=null;
+ if(H&&H.time&&c.time){const k=H.time.indexOf(c.time.slice(0,13)+':00');if(k>=0)soil=H.soil_temperature_6cm[k]}
+ return{days,past,best,cur:c,soil}}
+function wxRender(loading){
+ const el=$('#wxc');if(!el)return;
+ const M=wxModel();
+ if(!M){el.innerHTML=`<h3>Időjárás</h3><p class="mut">${loading?'Betöltés…':'Az időjárás betöltéséhez internetkapcsolat kell.'}</p>${loading?'':'<button class="qb" data-h="wxr">Újrapróbálom</button>'}`;return}
+ const t=M.days[0],c=M.cur,sp=t.sp;
+ const dn=iso=>new Date(iso+'T12:00:00').toLocaleDateString('hu-HU',{weekday:'short'});
+ el.innerHTML=`<h3>Időjárás <small>${WX.stale?'nincs kapcsolat, korábbi adat':'a táblák térségében'}</small></h3>
+ <div class="wxn"><div class="wxm">${wxIcon(c.weather_code!=null?c.weather_code:t.code)}<div><b class="wxt">${c.temperature_2m!=null?Math.round(c.temperature_2m):Math.round(t.tmax)}°</b><span>${WTXT(c.weather_code!=null?c.weather_code:t.code)}</span></div></div>
+ <div class="wxs ${sp.c}"><span>Permetezés ma</span><b>${sp.t}</b><i>${M.best?'legjobb idő: '+M.best.a+'–'+(M.best.b+1)+' óra':(sp.c==='bad'?'szél vagy csapadék miatt':'')}</i></div></div>
+ <div class="wxf">${M.days.map((x,i)=>`<div class="wxd"><span>${i?dn(x.d):'Ma'}</span>${wxIcon(x.code)}<b>${Math.round(x.tmax)}°</b><i>${Math.round(x.tmin)}°</i><em class="sp ${x.sp.c}" title="Permetezés: ${x.sp.t}"></em><small>${x.rain>=.1?x.rain.toFixed(1)+' mm':''}</small></div>`).join('')}</div>
+ <div class="wxx"><span>Elmúlt 7 nap: <b>${M.past.toFixed(0)} mm</b> csapadék</span>${M.soil!=null?`<span>Talaj (6 cm): <b>${M.soil.toFixed(1)} °C</b></span>`:''}<span>Szél ma: <b>${t.wind.toFixed(0)} m/s</b></span></div>
+ <div class="mut wxa">Adatok: <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo.com</a></div>`}
+
+/* ---------- Ma oldal ---------- */
+function alertsList(){
+ const A=[],td=today();
+ VF().forEach(f=>{const pw=pendingWait(f.id,td);if(pw)A.push({lv:'warn',t:f.name+': betakarítás legkorábban '+fmtD(pw.until),s:(pw.l.mat||'Permetezés')+' · '+pw.l.wait+' nap várakozási idő',go:['field',f.id]})});
+ S.tasks.filter(t=>!t.done&&(!t.fid||scope(fieldFarm(t.fid)))).sort((a,b)=>a.date.localeCompare(b.date)).forEach(t=>{const d=dayDiff(t.date);if(d<=0)A.push({lv:d<0?'bad':'info',t:(d<0?'Késik: ':'Ma esedékes: ')+(t.type||'munka')+(t.fid?' · '+fieldName(t.fid):''),s:dueTxt(t.date),go:['plan']})});
+ try{stockData().forEach(it=>{const v=sView(it);if(v.stock<-1e-9)A.push({lv:'info',t:'Nincs bevételezve: '+it.m.name,s:'A felhasználás több, mint a rögzített készlet',go:['stock']})})}catch(e){}
+ const M=wxModel();
+ if(M){const fr=M.days.slice(0,3).find(x=>x.tmin<=0);if(fr)A.push({lv:'warn',t:'Fagyveszély: '+Math.round(fr.tmin)+' °C',s:fmtD(fr.d),go:['home']});
+  const st=M.days.slice(0,2).find(x=>x.gust>=17);if(st)A.push({lv:'warn',t:'Erős széllökések: '+Math.round(st.gust)+' m/s',s:fmtD(st.d),go:['home']})}
+ return A}
+function renderHomeAlerts(){
+ const el=$('#hal');if(!el)return;
+ const A=alertsList();
+ el.innerHTML='<h3>Figyelmeztetések</h3>'+(A.length?A.map((a,i)=>`<button class="al ${a.lv}" data-ha="${i}"><span class="ad"></span><span><b>${esc(a.t)}</b><small>${esc(a.s||'')}</small></span></button>`).join(''):'<p class="mut ok">Minden rendben, nincs teendő vagy figyelmeztetés.</p>');
+ el._A=A}
+function greet(){const h=new Date().getHours();return h<10?'Jó reggelt':h<18?'Szép napot':'Jó estét'}
+function demoData(){
+ const y=new Date().getFullYear(),id=()=>uid();
+ const fa=id(),fb=id(),f1=id(),f2=id(),f3=id(),m1=id(),m2=id(),m3=id(),m4=id(),a1=id(),a2=id(),a3=id();
+ const poly=(a,b,c,d)=>[[a,b],[a,d],[c,d],[c,b]],ar=p=>areaHa(p);
+ const P1=poly(46.9150,19.6900,46.9115,19.6980),P2=poly(46.9050,19.7000,46.9005,19.7070),P3=poly(46.9000,19.6800,46.8970,19.6860);
+ const fix=(a,b,c,d)=>[[a,b],[a,d],[c,d],[c,b]];
+ S.farms=[{id:fa,name:'Északi gazdaság'},{id:fb,name:'Déli gazdaság'}];
+ S.fields=[{id:f1,name:'Hosszú-dűlő',crop:'őszi búza',coords:fix(46.9150,19.6900,46.9115,19.6980),farm:fa},{id:f2,name:'Alsó-tábla',crop:'kukorica',coords:fix(46.9050,19.7000,46.9005,19.7070),farm:fa},{id:f3,name:'Nyárfás',crop:'napraforgó',coords:fix(46.9000,19.6800,46.8970,19.6860),farm:fb}].map((f,i)=>Object.assign(f,{area:areaHa(f.coords),budget:0,blk:['0123/4','0245/12','KH31877-B'][i]}));
+ S.machines=[{id:m1,name:'Fendt 313',type:'traktor',hours:3120},{id:m2,name:'Claas Lexion',type:'kombajn',hours:1850},{id:a1,name:'Kuhn tárcsa',type:'talaj',hours:null},{id:a2,name:'Amazone permetező',type:'vpermetezo',hours:null}];
+ S.workers=[{id:id(),name:'Kiss Pista'},{id:id(),name:'Nagy Anna'}];
+ S.mats=[{id:id(),name:'Karate Zeon',kind:'vegyszer',unit:'l',group:'rovarölő',wait:14},{id:id(),name:'NPK 15-15-15',kind:'mutragya',unit:'kg',group:'NPK',wait:null},{id:id(),name:'DKC 4590',kind:'vetomag',unit:'zsák',group:'kukorica',wait:null}];
+ const L=(fid,mm,dd,type,o)=>Object.assign({id:id(),fid,date:y+'-'+mm+'-'+dd,type,op:null,variety:null,worker:'Kiss Pista',mid:null,iid:null,h0:null,h1:null,fuel:null,mat:'',qty:null,unit:'kg',note:''},o);
+ S.logs=[L(f1,'03','18','Talajmunka',{op:'Tárcsázás',mid:m1,iid:a1,h0:3050,h1:3062,fuel:96}),L(f1,'03','24','Tápanyag-utánpótlás',{mat:'NPK 15-15-15',qty:3200,unit:'kg',worker:'Nagy Anna'}),L(f2,'04','20','Vetés',{variety:'DKC 4590',mat:'DKC 4590',qty:12,unit:'zsák'}),L(f1,'05','30','Permetezés',{mat:'Karate Zeon',qty:6,unit:'l',mid:m1,iid:a2,liq:200,wait:14,ts:Date.now()}),L(f1,'07','10','Betakarítás',{mat:'őszi búza',qty:62,unit:'t',mid:m2,h0:1800,h1:1824,fuel:210}),L(f2,'10','05','Betakarítás',{mat:'kukorica',qty:98.5,unit:'t',mid:m2,h0:1824,h1:1850,fuel:260})];
+ S.costs=[{id:id(),fid:f1,lid:null,date:y+'-03-24',cat:'Műtrágya',desc:'NPK 15-15-15',amt:480000},{id:id(),fid:f2,lid:null,date:y+'-04-20',cat:'Vetőmag',desc:'DKC 4590',amt:620000}];
+ S.revs=[{id:id(),fids:[f1],date:y+'-08-05',qty:25,unit:'t',price:72000,note:'Agrár Kft.',crop:'őszi búza',farm:fa}];
+ S.stock=S.mats.map(m=>({id:id(),mid:m.id,date:y+'-02-15',qty:m.kind==='vegyszer'?40:m.kind==='mutragya'?6000:60,unit:m.unit,out:false,note:'Kezdőkészlet'}));S.tasks=[{id:id(),fid:f3,type:'Talajmunka',date:today(),worker:'Kiss Pista',note:'szántás előkészítés',done:false}];S.scouts=[];S.curFarm='';
+ S=migrate(S);save();render();toast('A demó adatok betöltve. Bármikor törölheted őket az Adatok oldalon.')}
+function renderHome(){
+ const el=$('#home');if(!el)return;
+ const fs=VF(),ha=fs.reduce((a,f)=>a+f.area,0);
+ const d=new Date().toLocaleDateString('hu-HU',{weekday:'long',month:'long',day:'numeric'});
+ const farm=S.curFarm?(S.curFarm==='-'?'Nincs gazdaságba sorolva':farmName(S.curFarm)):(S.farms.length?'Egész gazdaság':'');
+ if(!S.fields.length){
+  el.innerHTML=`<div class="hero"><div><h2>Üdv a Gazdanaplóban!</h2><p class="mut">Kezdjünk három egyszerű lépéssel. Az adatok ezen az eszközön maradnak.</p></div></div>
+  <div class="cc steps"><div class="stp"><span>1</span><div><b>Rajzold meg az első táblát</b><p class="mut">Keresd meg a területet a műholdképen, és kattints a sarokpontokra.</p></div><button class="btn" data-h="draw">Tábla rajzolása</button></div>
+  <div class="stp"><span>2</span><div><b>Vedd fel a gépeket, anyagokat, munkásokat</b><p class="mut">Egyszer kell, utána legördülő menüből választhatók.</p></div><button class="btn alt" data-h="data">Adatok megnyitása</button></div>
+  <div class="stp"><span>3</span><div><b>Rögzítsd az első munkát</b><p class="mut">A készlet, a költségek és a naplók ebből kitöltődnek.</p></div><button class="btn alt" data-h="work">Új munka</button></div></div>
+  <p class="mut" style="margin-top:18px">Először csak ki szeretnéd próbálni? <button class="qb" data-h="demo">Demó adatok betöltése</button></p>`;return}
+ const rev=VR().filter(r=>inY(r.date)).reduce((a,r)=>a+revVis(r),0),cost=costOf(null);
+ let tstock=0;try{cropData().forEach(c=>{const v=cView(c);if(v.stock>0)tstock+=v.stock})}catch(e){}
+ const lw=VL().slice().sort((a,b)=>String(b.date).localeCompare(String(a.date))||b.id-a.id).slice(0,5);
+ const tk=S.tasks.filter(t=>!t.done&&(!t.fid||scope(fieldFarm(t.fid)))).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,5);
+ const sc=S.scouts.filter(s=>scope(fieldFarm(s.fid))).sort((a,b)=>String(b.date).localeCompare(String(a.date))||b.id-a.id).slice(0,3);
+ el.innerHTML=`<div class="hero"><div><h2>${greet()}!</h2><p class="mut">${d}${farm?' · '+esc(farm):''}</p></div>
+  <div class="hact"><button class="btn" data-h="work">+ Új munka</button><button class="btn alt" data-h="scout">Megfigyelés</button><button class="btn alt" data-h="task">+ Teendő</button></div></div>
+  <div class="hkpi"><div class="kt"><span>Táblák</span><b>${fs.length} db</b><i>${num(ha)} ha</i></div><div class="kt"><span>Költség</span><b>${fmt(cost)} Ft</b><i>${yr||'összes év'}</i></div><div class="kt"><span>Bevétel</span><b>${fmt(rev)} Ft</b><i>${yr||'összes év'}</i></div><div class="kt"><span>Terménykészlet</span><b>${ton(tstock)}</b><i>raktáron</i></div></div>
+  <div class="hgrid"><div class="cc wxc" id="wxc"></div><div class="cc" id="hal"></div>
+  <div class="cc"><h3>Következő teendők <button class="lnk" data-h="task">Mind</button></h3>${tk.length?tk.map(t=>`<div class="tk${dayDiff(t.date)<0?' late':''}"><span class="dot" style="background:${colorOf(t.type)}"></span><div class="tkb"><b>${esc(t.type)}</b>${t.fid?' · '+esc(fieldName(t.fid)):''}<div class="mut"><span class="${dayDiff(t.date)<0?'neg':''}">${dueTxt(t.date)}</span>${t.worker?' · '+esc(t.worker):''}</div></div><button class="qb" data-tdone="${t.id}">Elvégeztem</button></div>`).join(''):'<p class="mut">Nincs nyitott teendő.</p>'}</div>
+  <div class="cc"><h3>Legutóbbi munkák <button class="lnk" data-h="done">Mind</button></h3>${lw.length?lw.map(l=>`<div class="tk"><span class="dot" style="background:${colorOf(keyOf(l))}"></span><div class="tkb"><b>${esc(keyOf(l))}</b> · ${esc(fieldName(l.fid))}<div class="mut">${fmtD(l.date)}${l.worker?' · '+esc(l.worker):''}${l.mat?' · '+esc(l.mat)+(l.qty?' '+num(l.qty)+' '+esc(l.unit):''):''}</div></div></div>`).join(''):'<p class="mut">Még nincs rögzített munka.</p>'}</div>
+  <div class="cc"><h3>Megfigyelések <button class="lnk" data-h="scout">+ Új</button></h3>${sc.length?sc.map(s=>scoutRow(s,true)).join(''):'<p class="mut">Még nincs megfigyelés. Terepbejáráskor fotóval is rögzítheted.</p>'}</div></div>`;
+ renderHomeAlerts();wxRender();loadPhotos(el)}
+$('#home').onclick=e=>{
+ if(taskAction(e))return;
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.ha!=null){const a=($('#hal')._A||[])[+b.dataset.ha];if(!a)return;
+  if(a.go[0]==='field'){mobGo('map');detId=null;selectField&&selectField(a.go[1]);openDetail(a.go[1])}else mobGo(a.go[0]);return}
+ const k=b.dataset.h;if(!k)return;
+ if(k==='work')mobGo('log');else if(k==='scout')openScout();else if(k==='task')mobGo('plan');else if(k==='done')mobGo('done');
+ else if(k==='data')mobGo('data');else if(k==='wxr')loadWx(true);else if(k==='demo'){if(!S.fields.length)demoData()}
+ else if(k==='draw'){mobGo('fields');$('#newf').open=true;setTimeout(()=>$('#fname').focus(),50)}};
+
+
+/* ---------- Jelentések és nyomtatás ---------- */
+const PF={pfn:'name',pfa:'addr',pff:'felir',pfd:'adv',pfs:'advNo'};
+Object.entries(PF).forEach(([id,k])=>$('#'+id).addEventListener('input',()=>{S.profile[k]=$('#'+id).value.trim();save()}));
+function sprayRows(){
+ return VL().filter(l=>l.type==='Permetezés'&&inY(l.date)).sort((a,b)=>String(a.date).localeCompare(String(b.date))||a.id-b.id).map(l=>{
+  const f=S.fields.find(x=>x.id===l.fid)||{},miss=[];
+  if(!l.mat)miss.push('szer neve');if(!(l.qty>0))miss.push('mennyiség');if(!(l.liq>0))miss.push('permetlé (l/ha)');if(l.wait==null)miss.push('várakozási idő');if(!f.blk)miss.push('tábla azonosítója (HRSZ/blokk)');
+  const late=l.ts&&l.date&&(new Date(l.ts)-new Date(l.date+'T23:59:59'))>864e5;
+  return{l,f,miss,late,until:l.wait>0&&l.date?addDays(l.date,l.wait):''}})}
+function renderRep(){
+ if(!$('#rep'))return;
+ Object.entries(PF).forEach(([id,k])=>{if(document.activeElement!==$('#'+id))$('#'+id).value=S.profile[k]||''});
+ $('#repper').textContent='Időszak: '+(yr||'összes év')+' · '+(S.curFarm?(S.curFarm==='-'?'gazdaságba nem sorolt':farmName(S.curFarm)):'egész gazdaság')+'. Az időszak és a gazdaság az oldal tetején váltható.';
+ const R=sprayRows(),bad=R.filter(r=>r.miss.length||r.late),pf=S.profile;
+ const pm=[];if(!pf.name)pm.push('gazdálkodó neve');if(!pf.addr)pm.push('címe');if(!pf.felir)pm.push('FELIR azonosító');
+ $('#repchk').innerHTML=`<div class="sh" style="margin-top:0">Megfelelőségi ellenőrzés</div>`+
+  (R.length?`<p class="chk ${bad.length?'warn':'ok'}"><b>${R.length}</b> permetezési bejegyzésből <b>${bad.length}</b> hiányos vagy későn rögzített.</p>`:'<p class="mut">Ebben az időszakban nincs permetezési bejegyzés.</p>')
+  +(bad.slice(0,6).map(r=>`<div class="al warn" style="cursor:default"><span class="ad"></span><span><b>${fmtD(r.l.date)} · ${esc(r.f.name||'?')}</b><small>${r.miss.length?'Hiányzik: '+r.miss.join(', ')+'. ':''}${r.late?'Későn rögzítve (a rendelet 24 órát ír elő).':''}</small></span></div>`).join(''))
+  +(pm.length?`<div class="al info" style="cursor:default"><span class="ad"></span><span><b>A fejléc hiányos</b><small>Add meg: ${pm.join(', ')}.</small></span></div>`:'')
+  +'<p class="mut" style="margin-top:10px">A hiányzó adatokat a munka ✎ szerkesztésével, a táblánál az azonosítót a Szerkesztés gombbal, a szer várakozási idejét az Adatok oldalon pótolhatod.</p>'}
+function printDoc(title,sub,cols,rows,foot){
+ const pf=S.profile,e=esc;
+ $('#printarea').innerHTML=`<h1>${e(title)}</h1><div class="pmeta"><div><b>Gazdálkodó:</b> ${e(pf.name||'—')}<br><b>Cím:</b> ${e(pf.addr||'—')}<br><b>FELIR azonosító:</b> ${e(pf.felir||'—')}</div><div>${sub}<br><b>Készült:</b> ${fmtD(today())}</div></div>
+ <table><thead><tr>${cols.map(c=>`<th>${e(c)}</th>`).join('')}</tr></thead><tbody>${rows.length?rows.map(r=>`<tr>${r.map(c=>`<td>${e(c)}</td>`).join('')}</tr>`).join(''):`<tr><td colspan="${cols.length}">Nincs adat a kiválasztott időszakban.</td></tr>`}</tbody></table><p class="pfoot">${foot}</p>`;
+ document.body.classList.add('printing');
+ setTimeout(()=>{try{window.print()}finally{setTimeout(()=>document.body.classList.remove('printing'),500)}},80)}
+const scopeTxt=()=>'<b>Időszak:</b> '+(yr||'összes év')+'<br><b>Gazdaság:</b> '+(S.curFarm?(S.curFarm==='-'?'gazdaságba nem sorolt':esc(farmName(S.curFarm))):'egész gazdaság');
+function repSpray(csv){
+ const R=sprayRows(),pf=S.profile;
+ const cols=['Dátum','Hely (tábla · HRSZ/blokk)','Kultúra','Terület (ha)','Szer neve','Felhasznált mennyiség','Mennyiség / ha','Permetlé (l/ha)','Várakozási idő (nap)','Legkorábbi betakarítás','Végezte'];
+ const rows=R.map(r=>{const l=r.l,a=r.f.area||0;return[fmtD(l.date),(r.f.name||'?')+(r.f.blk?' · '+r.f.blk:''),r.f.crop||'',a?a.toFixed(2):'',l.mat||'',l.qty>0?num(l.qty)+' '+l.unit:'',l.qty>0&&a?num(l.qty/a)+' '+l.unit+'/ha':'',l.liq>0?num(l.liq):'',l.wait!=null?String(l.wait):'',r.until?fmtD(r.until):'',l.worker||'']});
+ if(csv){csvOut('permetezesi-naplo.csv',[cols].concat(rows));return}
+ printDoc('Permetezési napló (növényvédő szer felhasználási nyilvántartás)',scopeTxt()+'<br><b>Szaktanácsadó:</b> '+esc(pf.adv||'—')+(pf.advNo?' ('+esc(pf.advNo)+')':''),cols,rows,'A kezelést a munkavégzést követő 24 órán belül kell rögzíteni, a nyilvántartást az utolsó bejegyzéstől számított 3 évig meg kell őrizni (43/2010. (IV. 23.) FVM rendelet 30. §, Nébih tájékoztatás). A nyomtatvány a program adataiból készült; a hivatalos előírásoknak való megfelelésért a gazdálkodó felel.')}
+function repWork(csv){
+ const rows=VL().filter(l=>inY(l.date)).sort((a,b)=>String(a.date).localeCompare(String(b.date))||a.id-b.id).map(l=>{
+  const f=S.fields.find(x=>x.id===l.fid)||{};
+  return[fmtD(l.date),(f.name||'?')+(f.blk?' · '+f.blk:''),keyOf(l)+(l.variety?' ('+l.variety+')':''),[machName(l.mid),machName(l.iid)].filter(Boolean).join(' + '),l.worker||'',l.mat?l.mat+(l.qty>0?' · '+num(l.qty)+' '+l.unit:''):'',l.h0!=null&&l.h1!=null?num(l.h1-l.h0)+' üó':'',l.fuel?num(l.fuel)+' l':'',l.note||'']});
+ const cols=['Dátum','Tábla','Munka','Gép és eszköz','Végezte','Anyag · mennyiség','Üzemóra','Gázolaj','Megjegyzés'];
+ if(csv){csvOut('munkak.csv',[cols].concat(rows));return}
+ printDoc('Munkanapló összesítő',scopeTxt(),cols,rows,'A nyomtatvány a program adataiból készült.')}
+function repCrop(){
+ const C=cropData(),rows=C.map(c=>{const v=cView(c);return[c.name,ton(v.harv),ton(v.inn),ton(v.sold),ton(v.adj),ton(v.stock)]});
+ const yl=[];VF().forEach(f=>{S.logs.filter(l=>l.fid===f.id&&l.type==='Betakarítás'&&l.qty>0&&inY(l.date)).forEach(l=>{const [u,m]=BASE(l.unit||'t');if(u==='kg'&&f.area)yl.push([f.name+(f.blk?' · '+f.blk:''),l.mat||f.crop||'',fmtD(l.date),ton(l.qty*m),num(l.qty*m/f.area/1000)+' t/ha'])})});
+ printDoc('Terménymérleg és hozamok',scopeTxt(),['Termény','Betakarítva','Hozzáadva','Eladva','Levonva','Készlet'],rows,'<b>Hozamok tábláról tábla:</b><br>'+(yl.length?yl.map(r=>esc(r.join(' · '))).join('<br>'):'nincs betakarítás az időszakban.'))}
+$('#rep').onclick=e=>{
+ const b=e.target.closest('button[data-r]');if(!b)return;
+ const k=b.dataset.r;
+ if(k==='spray')repSpray(false);else if(k==='csvspray')repSpray(true);else if(k==='work')repWork(false);else if(k==='csvwork')repWork(true);else if(k==='crop')repCrop()};
 
 /* ---------- Gépek ---------- */
 function openMachine(id,cb,kind){
@@ -1443,7 +1986,7 @@ function renderSelects(){
  fillSel('#flt-m','<option value="">Minden gép és eszköz</option>'+(gs.length?'<optgroup label="Gépek">'+gs.map(mo).join('')+'</optgroup>':'')+(es.length?'<optgroup label="Munkaeszközök">'+es.map(mo).join('')+'</optgroup>':''));
  const ws=[...new Set(S.logs.map(l=>l.worker).filter(Boolean))].sort();
  fillSel('#flt-w','<option value="">Minden munkás</option>'+ws.map(w=>`<option value="${esc(w)}">${esc(w)}</option>`).join(''));
- $('#wl').innerHTML=ws.map(w=>`<option value="${esc(w)}">`).join('');
+ renderWorkerSel();
  machIcon();
 }
 function logRows(){
@@ -1474,10 +2017,10 @@ function lmode(){
  $('#lsum').textContent=elog?'Munka szerkesztése':'Új munka rögzítése';
  $('#ladd').textContent=elog?'Módosítás mentése':'Munka rögzítése';
  $('#lcancel').classList.toggle('hide',!elog)}
-function clearLog(){elog=null;['#lh1','#lfuel','#lmat','#lq','#ln','#lc','#lvar'].forEach(s=>$(s).value='');prefillH0();lmode()}
+function clearLog(){elog=null;setWorker('');$('#lliq').value='';['#lh1','#lfuel','#lmat','#lq','#ln','#lc','#lvar'].forEach(s=>$(s).value='');prefillH0();lmode()}
 $('#lh0').oninput=$('#lh1').oninput=hrsText;
 let prevLT='';
-function lupd(){const t0=$('#lt').value;if(prevLT==='Betakarítás'&&t0!=='Betakarítás'&&!elog){$('#lmat').value='';$('#lu').value='kg'}prevLT=t0;matUI();const t=$('#lt').value;$('#lopw').classList.toggle('hide',t!=='Talajmunka');$('#lvarw').classList.toggle('hide',t!=='Vetés')}
+function lupd(){const t0=$('#lt').value;$('#lliqw').classList.toggle('hide',t0!=='Permetezés');if(prevLT==='Betakarítás'&&t0!=='Betakarítás'&&!elog){$('#lmat').value='';$('#lu').value='kg'}prevLT=t0;matUI();const t=$('#lt').value;$('#lopw').classList.toggle('hide',t!=='Talajmunka');$('#lvarw').classList.toggle('hide',t!=='Vetés')}
 $('#lt').onchange=lupd;
 $('#lf').onchange=()=>{if($('#lt').value==='Betakarítás'&&!elog)$('#lmat').value='';matUI()};
 $('#lm').onchange=()=>{
@@ -1494,32 +2037,40 @@ $('#ladd').onclick=()=>{
  const fid=+$('#lf').value,mv=$('#lm').value;
  const tp=$('#lt').value,d={fid,date:$('#ld').value,type:tp,op:tp==='Talajmunka'&&$('#lop').value?$('#lop').value:null,variety:tp==='Vetés'&&$('#lvar').value.trim()?$('#lvar').value.trim():null,worker:$('#lw').value.trim(),mid:mv&&mv!=='__new'?+mv:null,
   iid:null,h0:pn($('#lh0').value),h1:pn($('#lh1').value),fuel:pn($('#lfuel').value),mat:$('#lmat').value.trim(),qty:pn($('#lq').value),unit:$('#lu').value,note:$('#ln').value.trim()};
+ d.worker=getWorker();
+ d.liq=tp==='Permetezés'&&$('#lliq').value!==''?pn($('#lliq').value):null;
+ {const mm=S.mats.find(x=>x.name.toLowerCase()===String(d.mat||'').toLowerCase());d.wait=tp==='Permetezés'&&mm&&mm.wait!=null?mm.wait:null}
+ if(tp==='Vetés'&&!d.mat&&d.qty>0&&d.variety)d.mat=d.variety;
+ let addedMat=null;
+ {const k=tp==='Betakarítás'?null:(tp==='Vetés'?'vetomag':tp==='Permetezés'?'vegyszer':tp==='Tápanyag-utánpótlás'?'mutragya':matKind());
+  if(k&&d.mat&&d.qty>0&&!S.mats.some(x=>x.name.toLowerCase()===d.mat.toLowerCase())){S.mats.push({id:uid(),name:d.mat,kind:k,unit:d.unit||(k==='vegyszer'?'l':'kg'),group:''});addedMat=d.mat}}
  if(d.mid){const mm=S.machines.find(x=>x.id===d.mid);if(mm&&canHitch(mm.type)&&$('#li').value&&$('#li').value!=='__new')d.iid=+$('#li').value}else{d.h0=null;d.h1=null}
  if(!fid){toast('Előbb vegyél fel egy táblát.');return}
  if(!d.date){toast('Add meg a dátumot.');return}
  if(d.h0!=null&&d.h1!=null&&d.h1<d.h0){toast('A záró üzemóra nem lehet kisebb a kezdőnél.');return}
+ if(tp==='Betakarítás'){const pw=pendingWait(fid,d.date);if(pw&&!confirm('Figyelem: a(z) „'+(pw.l.mat||'permetezés')+'” ('+fmtD(pw.l.date)+') miatt az élelmezés-egészségügyi várakozási idő '+fmtD(pw.until)+'-ig tart. Biztosan rögzíted a betakarítást?'))return}
  let l;
- if(elog){l=S.logs.find(x=>x.id===elog);Object.assign(l,d)}else{l=Object.assign({id:uid()},d);S.logs.push(l)}
+ if(elog){l=S.logs.find(x=>x.id===elog);Object.assign(l,d)}else{l=Object.assign({id:uid(),ts:Date.now()},d);S.logs.push(l)}
  if(l.mid&&l.h1!=null){const m=S.machines.find(x=>x.id===l.mid);if(m&&(m.hours==null||l.h1>m.hours))m.hours=l.h1}
  const amt=pn($('#lc').value)||0,c=S.costs.find(x=>x.lid===l.id);
  if(amt>0){if(c)Object.assign(c,{fid:l.fid,date:l.date,amt});else S.costs.push({id:uid(),fid:l.fid,lid:l.id,date:l.date,cat:'Munka',desc:keyOf(l),amt})}
  else if(c)S.costs=S.costs.filter(x=>x!==c);
- const was=!!elog;save();clearLog();if(dmode==='work')dmode='view';render();toast(was?'A munka módosítva.':'A munka rögzítve.')};
-$('#lcancel').onclick=()=>{clearLog();if(dmode==='work'){dmode='view';render()}};
+ const was=!!elog;save();clearLog();if(dmode==='work')dmode='view';render();if(backDone){backDone=false;goTab('done')}toast((was?'A munka módosítva.':'A munka rögzítve.')+(addedMat?' „'+addedMat+'” felvéve az anyagok közé, a Készletben látszik.':''))};
+$('#lcancel').onclick=()=>{clearLog();if(backDone){backDone=false;goTab('done')}if(dmode==='work'){dmode='view';render()}};
 function startEditLog(id){
   const l=S.logs.find(x=>x.id===id);if(!l)return;
   elog=l.id;
-  $('#lf').value=l.fid;$('#ld').value=l.date;$('#lt').value=l.type;lupd();$('#lop').value=l.op||'';$('#lvar').value=l.variety||'';$('#lw').value=l.worker||'';
+  $('#lf').value=l.fid;$('#ld').value=l.date;$('#lt').value=l.type;lupd();$('#lop').value=l.op||'';$('#lvar').value=l.variety||'';setWorker(l.worker||'');
   $('#lm').value=l.mid&&S.machines.some(m=>m.id===l.mid)?l.mid:'';$('#li').value=l.iid&&S.machines.some(m=>m.id===l.iid)?l.iid:'';
   $('#lh0').value=l.h0??'';$('#lh1').value=l.h1??'';$('#lfuel').value=l.fuel??'';$('#lmat').value=l.mat||'';matUI();$('#lq').value=l.qty??'';
-  $('#lu').value=l.unit||'kg';$('#ln').value=l.note||'';
+  $('#lu').value=l.unit||'kg';$('#ln').value=l.note||'';$('#lliq').value=l.liq??'';doseUI();
   const c=S.costs.find(x=>x.lid===l.id);$('#lc').value=c?c.amt:'';
   hrsText();machIcon();lmode();$('#lform').open=true;$('#lform').scrollIntoView({block:'nearest',behavior:'smooth'});
 }
 $('#llist').onclick=e=>{
  const b=e.target.closest('button');if(!b)return;
  if(b.dataset.le){
-  startEditLog(+b.dataset.le);
+  backDone=true;goTab('log');startEditLog(+b.dataset.le);
  }else if(b.dataset.ld){
   if(confirm('Törlöd ezt a munkát? A hozzá rögzített költség is törlődik.')){
    const id=+b.dataset.ld;
@@ -1682,28 +2233,41 @@ function fillYears(){
 $('#yr').onchange=e=>{yr=e.target.value;render()};
 $('#yr2').onchange=e=>{yr=e.target.value;render()};
 let asideTab='fields';
+const grpTab=t=>t==='done'||t==='plan'?'log':t;
 function closePage(){
- $('#page').classList.add('hide');
- $$('nav button').forEach(x=>x.classList.toggle('on',x.dataset.tab===asideTab))}
+ $('#page').classList.add('hide');topSync();
+ $$('nav button').forEach(x=>x.classList.toggle('on',x.dataset.tab===grpTab(asideTab)))}
 function goTab(t){
- if(t==='fin'||t==='data'||t==='stock'){
+ document.body.classList.remove('mapfull');
+ const PG={home:['Ma','Áttekintés, időjárás és teendők'],fin:['Pénzügy','Költségek, bevételek és eredmény táblánként'],stock:['Készlet','Raktárkészlet: anyagok és betakarított termény'],rep:['Jelentések','Nyomtatható naplók és kimutatások'],data:['Adatok és beállítások','Gépek, vegyszerek, műtrágyák, munkások, mentés és visszatöltés']};
+ if(PG[t]){
   closeDetail();
-  $('#fin').classList.toggle('hide',t!=='fin');$('#data').classList.toggle('hide',t!=='data');$('#stock').classList.toggle('hide',t!=='stock');
-  $('#ptitle').textContent=t==='fin'?'Pénzügy':t==='stock'?'Készlet':'Adatok és beállítások';
-  $('#psub').textContent=t==='fin'?'Költségek, bevételek és eredmény táblánként':t==='stock'?'Raktárkészlet: anyagok és betakarított termény':'Gépek, vegyszerek, műtrágyák, mentés és visszatöltés';
+  Object.keys(PG).forEach(k=>$('#'+k).classList.toggle('hide',k!==t));
+  $('#ptitle').textContent=PG[t][0];$('#psub').textContent=PG[t][1];
   $$('.pg-tabs button').forEach(x=>x.classList.toggle('on',x.dataset.p===t));
   $$('nav button').forEach(x=>x.classList.toggle('on',x.dataset.tab===t));
-  $('#page').classList.remove('hide');$('#page').scrollTop=0;document.body.classList.remove('mapmode');mobTab(t);return}
- closePage();asideTab=t;document.body.classList.remove('mapmode');mobTab(t);
- $$('nav button').forEach(x=>x.classList.toggle('on',x.dataset.tab===t));
- ['fields','log'].forEach(id=>$('#'+id).classList.toggle('hide',id!==t));
- document.body.classList.toggle('wide',t==='log');
+  $('#page').classList.remove('hide');$('#page').scrollTop=0;document.body.classList.remove('mapmode');mobTab(t);enter($('#page'));
+  if(t==='home')loadWx();
+  topSync();return}
+ closePage();asideTab=t;document.body.classList.remove('mapmode');mobTab(grpTab(t));
+ $$('nav button').forEach(x=>x.classList.toggle('on',x.dataset.tab===grpTab(t)));
+ ['fields','log','plan','done'].forEach(id=>$('#'+id).classList.toggle('hide',id!==t));
+ document.body.classList.remove('wide');
  if(t!=='fields')closeDetail();
- $('aside').scrollTop=0}
+ $('aside').scrollTop=0;enter($('#'+t));topSync()}
 $$('.pg-tabs button').forEach(b=>b.onclick=()=>goTab(b.dataset.p));
+function topSync(){
+ const full=document.body.classList.contains('mapfull'),pg=['home','fin','stock','rep','data'].find(k=>!$('#'+k).classList.contains('hide'));
+ const cur=full?'map':(!$('#page').classList.contains('hide')&&pg)?pg:grpTab(asideTab);
+ $$('#topnav button').forEach(x=>x.classList.toggle('on',x.dataset.top===cur))}
+$$('#topnav button').forEach(b=>b.onclick=()=>{const k=b.dataset.top;
+ if(k==='map'){closePage();closeDetail();document.body.classList.add('mapfull');topSync();setTimeout(()=>map&&map.invalidateSize&&map.invalidateSize(),50)}
+ else goTab(k)});
 $('#pback').onclick=closePage;
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#page').classList.contains('hide')&&$('#mmodal').classList.contains('hide'))closePage()});
 $$('nav button').forEach(b=>b.onclick=()=>goTab(b.dataset.tab));
+$$('.seg button').forEach(b=>b.onclick=()=>goTab(b.dataset.go));
+let backDone=false;
 
 
 /* ---------- Tábla részletei (felugró panel) ---------- */
@@ -1732,7 +2296,7 @@ function leaveMode(){
  if(dmode==='work'&&elog)clearLog();
  if(dmode==='field'&&!edit)popId=null;
  dmode='view'}
-function openDetail(id){if(id!==detId)leaveMode();detId=id;renderDetail();const d=$('#fdet');if(d)d.scrollTop=0}
+function openDetail(id){const nw=id!==detId;if(nw)leaveMode();detId=id;renderDetail();const d=$('#fdet');if(d){d.scrollTop=0;if(nw)enter(d)}}
 function closeDetail(){leaveMode();rescue();detId=null;$('#fdet').classList.add('hide');document.body.classList.remove('hasdet')}
 function renderDetail(){
  const box=$('#fdet'),f=S.fields.find(x=>x.id===detId);
@@ -1757,18 +2321,21 @@ function renderDetail(){
  box.innerHTML=`<div class="dh"><button class="xx" data-act="close" aria-label="Bezárás">✕</button>
   <h2>${esc(f.name)}</h2><div class="sub">${a.toFixed(2)} ha${sub?' · '+sub:''}</div>
   <div class="pill"><span class="dot" style="background:${sc};margin:0"></span>${last?esc(keyOf(last))+' · '+fmtD(last.date):'Még nincs munka'}</div>
-  <div class="dact"><button class="btn" data-act="new">+ Új munka</button><button class="btn alt" data-act="log">Munkanapló</button><button class="btn alt" data-act="edit">Szerkesztés</button></div></div>
+  <div class="dact"><button class="btn" data-act="new">+ Új munka</button><button class="btn alt" data-act="scout">Megfigyelés</button><button class="btn alt" data-act="log">Munkák</button><button class="btn alt" data-act="edit">Szerkesztés</button></div></div>
   <div class="db">
+  ${(()=>{const pw=pendingWait(f.id,today());return pw?`<div class="warnb">⏳ Várakozási idő: betakarítás legkorábban <b>${fmtD(pw.until)}</b> (${esc(pw.l.mat||'permetezés')}, ${pw.l.wait} nap)</div>`:''})()}
   <div class="kp"><div class="kt"><span>${harvest?'Vetéstől a betakarításig':'Vetés óta'}</span><b>${days!=null?days+' nap':'—'}</b>${st.sow?`<i>vetés: ${fmtD(st.sow.date)}</i>`:'<i>nincs vetés</i>'}</div>
    <div class="kt"><span>Munkák</span><b>${season.length}</b><i>${st.sow?'az idényben':'összesen'}</i></div>
    <div class="kt"><span>Gázolaj</span><b>${num(fuel)} l</b><i>${a>0?num(fuel/a)+' l/ha':''}</i></div></div>
   <div class="dsec">Munkák idővonala <small>legrégebbitől az újabbig</small></div>${tl}
   ${Object.keys(mats).length?`<div class="dsec">Felhasznált anyagok</div>`+Object.entries(mats).map(([k,q])=>{const [n,u]=k.split('|');return `<div class="mat"><span>${esc(n)}</span><span>${num(q)} ${esc(u)}${a>0?' · '+num(q/a)+' '+esc(u)+'/ha':''}</span></div>`}).join(''):''}
+  ${scoutHtml(f.id)}
   <div class="dsec">Pénzügy <small>${esc(ylab)} · gazdálkodói adat</small></div>
   <div class="fin3"><div class="kt"><span>Költség</span><b>${fmt(C)} Ft</b><i>${a>0?fmt(C/a)+' Ft/ha':''}</i></div>
    <div class="kt"><span>Bevétel</span><b>${fmt(R)} Ft</b><i>${T>0?num(T)+' t'+(a>0?' · '+num(T/a)+' t/ha':''):''}</i></div>
    <div class="kt"><span>Eredmény</span><b class="${R-C<0?'neg':'pos'}">${fmt(R-C)} Ft</b><i>${a>0?fmt((R-C)/a)+' Ft/ha':''}</i></div></div>
   </div>`;
+ loadPhotos(box);
  if(dmode==='work'){
   box.querySelector('.dact').innerHTML='<button class="btn alt" data-act="back">← Vissza az adatlapra</button>';
   box.querySelector('.db').innerHTML='<div id="dslot"></div>';
@@ -1785,8 +2352,9 @@ $('#fdet').onclick=e=>{
  const id=detId,act=b.dataset.act;
  if(act==='close'){if(edit){toast('Előbb mentsd vagy vesd el a határ módosítását.');return}closeDetail()}
  else if(act==='new'){if(elog)clearLog();dmode='work';renderDetail();$('#lf').value=id;$('#ld').value=today();$('#fdet').scrollTop=0}
- else if(act==='log'){closeDetail();goTab('log');$('#flt-f').value=id;renderLog()}
+ else if(act==='log'){closeDetail();goTab('done');$('#flt-f').value=id;renderLog()}
  else if(act==='edit'){dmode='field';popId=id;cardFor=null;render()}
+ else if(act==='scout')openScout(id)
  else if(act==='back'){
   if(dmode==='field'&&edit){toast('Előbb mentsd vagy vesd el a határ módosítását.');return}
   if(dmode==='work'&&elog)clearLog();
@@ -1830,14 +2398,15 @@ map.on('locationfound',e=>{
 map.on('locationerror',()=>toast('A helyzeted nem állapítható meg. Engedélyezd a helymeghatározást a böngészőben.'));
 
 /* ---------- Indítás ---------- */
-function render(){fillYears();renderMap();renderFields();renderSelects();renderLog();renderFin();renderRevFields();renderFarms();renderData();renderMats();renderStock();renderCrops();svShow();renderDetail()}
+function render(){fillYears();renderMap();renderFields();renderSelects();renderLog();renderPlan();renderHome();renderRep();renderFin();renderRevFields();renderFarms();renderData();renderMats();renderWorkers();renderStock();renderCrops();svShow();renderDetail()}
 const topts=TYPES.map(t=>`<option>${t}</option>`).join('');
 $('#lt').innerHTML=topts;
 $('#ccat').innerHTML=CATS.map(c=>`<option>${c}</option>`).join('');
 ['#ld','#cd','#rd'].forEach(s=>$(s).value=today());
 $('#newf').open=!S.fields.length;
-$('#pgbody').appendChild($('#fin'));$('#pgbody').appendChild($('#stock'));$('#pgbody').appendChild($('#data'));
-fitAll();render();lmode();cmode();rmode();ui();lupd();
+$('#pgbody').appendChild($('#home'));$('#pgbody').appendChild($('#fin'));$('#pgbody').appendChild($('#rep'));$('#pgbody').appendChild($('#stock'));$('#pgbody').appendChild($('#data'));
+fitAll();render();lmode();cmode();rmode();ui();lupd();topSync();
+if(phone())mobGo('home');
 </script>
 </body>
 </html>
